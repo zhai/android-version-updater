@@ -2,6 +2,7 @@ package com.zhai.updater;
 
 import java.util.List;
 
+
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;

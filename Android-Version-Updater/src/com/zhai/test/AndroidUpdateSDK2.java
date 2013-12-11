@@ -1,4 +1,4 @@
-package com.zhai.updater;
+package com.zhai.test;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.zhai.updater.Activity_Verison_Update;
+import com.zhai.updater.UpdateConfig;
 import com.zhai.utils.HttpUtil;
 import com.zhai.utils.NetUtil;
 import com.zhai.utils.PropertyUtil;
