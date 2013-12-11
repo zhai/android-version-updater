@@ -5,14 +5,14 @@ Android-Version-Updater
 自动检查版本是否有更新
 
 程序特点:
-1. 开源
-2. 自动检查版本是否有更新，集成代码简单
-3. 服务器端可以直接控制是否客户端强制更新
+                1. 开源
+                2. 自动检查版本是否有更新，集成代码简单
+                3. 服务器端可以直接控制是否客户端强制更新
 
 
 集成说明：
-1. 下载项目，导入eclispe,添加项目引用
-2. 配置 Manifest.xml 添加如下节点
+                1. 下载项目，导入eclispe,添加项目引用
+                2. 配置 Manifest.xml 添加如下节点
         <!-- Android version updater -->
         <activity
             android:name="com.zhai.updater.Activity_Verison_Update"
@@ -22,10 +22,10 @@ Android-Version-Updater
         <service android:name="com.zhai.updater.CheckUpdateService" />
         <service android:name="com.zhai.updater.UpdateService" >
         </service>
-3. 添加服务器的配置文件， 建立/src/update.config 文件
+                3. 添加服务器的配置文件， 建立/src/update.config 文件
  文件格式如下：Update_Url=http://code.taobao.org/svn/zhaisoft/branches/zhaihost/zhaihost_update.txt 
 
-4.配置服务器的update.txt文件
+                4.配置服务器的update.txt文件
 文件格式说明： 
 //要空一格
 
