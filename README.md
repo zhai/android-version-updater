@@ -25,7 +25,7 @@ Android-Version-Updater : Android版本更新器
 
 4.配置服务器的update.txt文件
 文件格式说明： 
-#要空一格
+//要空一格
 
 version_name=1.0.20.1210   //服务器保存的最新app版本号, 当客户端版本低于此版本，会提示升级
 force_update=0   //1：强制升级，不升级将无法使用  0：用户可以跳过升级，一般置0
