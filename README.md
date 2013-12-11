@@ -1,4 +1,6 @@
-Android-Version-Updater : Android版本更新器
+Android-Version-Updater 
+=====
+: Android版本更新器
 开源软件介绍 ：
 自动检查版本是否有更新
 
