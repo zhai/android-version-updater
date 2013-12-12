@@ -105,6 +105,9 @@ public class Activity_Verison_Update extends Activity {
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		Bundle b = getIntent().getExtras();
+
+		if (b == null)
+			return;
 		int command = b.getInt("command");
 		switch (command) {
 		case UpdateConfig.DIALOG_UPDATE:
