@@ -41,7 +41,7 @@ public class CheckUpdateService extends IntentService {
 		currentVersionName = VersionUtil.getAppVersionName(context);
 		String url = null;
 		try {
-			url = PropertyUtil.getPropertyFromSrcString("update.config")
+			url = PropertyUtil.getPropertyFromSrcString("update.config_all")
 					.getProperty("Update_Url");
 		} catch (Exception e1) {
 			// 不存在的情况
