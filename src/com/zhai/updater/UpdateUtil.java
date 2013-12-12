@@ -66,7 +66,6 @@ public class UpdateUtil {
 			UpdateConfig.force_update = prop.getProperty("force_update")
 					.equals("1") ? true : false;
 
-			UpdateConfig.hostUrl = prop.getProperty("host");
 			if (UpdateConfig.version_name.compareTo(currentVersionName) != 0) {
 				// 有更新，弹出对话框
 				Message msg = updateHandler.obtainMessage(DIALOG_UPDATE, null);

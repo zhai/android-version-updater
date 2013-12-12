@@ -38,5 +38,16 @@ Android-Version-Updater
 
 ### 使用说明：后续补充
 
+#要空一格
+
+version_name=1.0.20.1210
+#服务器保存的最新程序的版本号，每次发布升级需要更新此版本号
+force_update=0
+# 1： 强制用户升级，用户不升级，无法进入下一步使用   0：不强制用户升级，用户可以跳过升级界面，继续使用下次升级
+apk=http://code.taobao.org/svn/zhaisoft/branches/ants-home/onekeyhost.apk
+# 升级文件的Url 
+info=http://code.taobao.org/svn/zhaisoft/branches/ants-home/update.html
+# 升级的提示信息  html方式展示，格式可以用户自定义， 支持所有的HTML格式标签
+
 
  

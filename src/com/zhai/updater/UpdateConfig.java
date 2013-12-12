@@ -10,7 +10,6 @@ public class UpdateConfig {
 	public static String apk = "";
 	public static String version_name = "";
 	public static String info = "";
-	public static String hostUrl = "";
 	public static boolean force_update = false;
 
 	public static float MB;
