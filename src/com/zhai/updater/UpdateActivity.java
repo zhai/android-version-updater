@@ -78,7 +78,8 @@ public class UpdateActivity extends Activity implements
 					Intent intent = new Intent(Intent.ACTION_VIEW);
 					intent.setDataAndType(Uri.fromFile(new File(Environment
 							.getExternalStorageDirectory(),
-							UpdateConfig.apkName)),
+							getResources()
+							.getString(R.string.app_name) + ".apk")),
 							"application/vnd.android.package-archive");
 					startActivity(intent);
 					break;
