@@ -221,8 +221,9 @@ public class Activity_Verison_Update extends Activity {
 							showDialog(UpdateConfig.DIALOG_DOWNLOADING);
 							new Thread() {
 								public void run() {
-									UpdateUtil.loadFile(UpdateConfig.apk,
-											updateHandler);
+									UpdateUtil.loadFile(
+											Activity_Verison_Update.this,
+											UpdateConfig.apk, updateHandler);
 								}
 							}.start();
 						}

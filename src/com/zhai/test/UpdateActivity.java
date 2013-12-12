@@ -1,6 +1,14 @@
-package com.zhai.updater;
+package com.zhai.test;
 
 import java.io.File;
+
+import com.zhai.updater.R;
+import com.zhai.updater.UpdateConfig;
+import com.zhai.updater.UpdateService;
+import com.zhai.updater.UpdateUtil;
+import com.zhai.updater.R.id;
+import com.zhai.updater.R.layout;
+import com.zhai.updater.R.string;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -77,8 +85,7 @@ public class UpdateActivity extends Activity implements
 					finish();
 					Intent intent = new Intent(Intent.ACTION_VIEW);
 					intent.setDataAndType(Uri.fromFile(new File(Environment
-							.getExternalStorageDirectory(),
-							getResources()
+							.getExternalStorageDirectory(), getResources()
 							.getString(R.string.app_name) + ".apk")),
 							"application/vnd.android.package-archive");
 					startActivity(intent);
@@ -161,8 +168,8 @@ public class UpdateActivity extends Activity implements
 							showDialog(UpdateConfig.DIALOG_DOWNLOADING);
 							new Thread() {
 								public void run() {
-									UpdateUtil.loadFile(UpdateConfig.apk,
-											updateHandler);
+									UpdateUtil.loadFile(UpdateActivity.this,
+											UpdateConfig.apk, updateHandler);
 								}
 							}.start();
 						}

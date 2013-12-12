@@ -28,11 +28,9 @@ public class UpdateUtil {
 	static int DIALOG_UPDATE = 100;
 
 	private static String currentVersionName = "";
-	private static Context context;
 
 	public static boolean checkUpdate(Context context, Handler updateHandler) {
 
-		UpdateUtil.context = context;
 		// 1.检测网络是否连接
 		if (!NetUtil.isNetWorkConnected(context)) {
 			return false;
@@ -85,7 +83,8 @@ public class UpdateUtil {
 
 	}
 
-	public static void loadFile(String url, Handler updateHandler) {
+	public static void loadFile(Context context, String url,
+			Handler updateHandler) {
 		HttpClient client = new DefaultHttpClient();
 		HttpGet get = new HttpGet(url);
 		HttpResponse response;
