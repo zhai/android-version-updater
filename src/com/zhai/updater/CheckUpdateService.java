@@ -83,10 +83,9 @@ public class CheckUpdateService extends IntentService {
 
 				return false;
 			}
-		} catch (IOException e2) {
-			e2.printStackTrace();
 		} catch (Exception e) {
-			e.printStackTrace();
+			// e.printStackTrace();
+			Log.i(TAG, "无法连接到更新服务器，可能是因为网络不通");
 		}
 		return false;
 	}
