@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, home!</string>
+    <string name="info_times_hour">时</string>
+    <string name="info_times_minute">分</string>
+    <string name="down_from_market">市场下载</string>
+    <string name="down_from_website">网站下载</string>
+    <string name="exit">退出</string>
+    <string name="ok">确定</string>
+    <string name="textview">TextView</string>
+    <string name="send">发送</string>
+    <string name="cancel">取消</string>
+    <string name="donwload">下载</string>
+
+</resources>
