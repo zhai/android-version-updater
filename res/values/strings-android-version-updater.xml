@@ -2,15 +2,13 @@
 <resources>
 
     <string name="hello">Hello World, home!</string>
-    <string name="info_times_hour">时</string>
-    <string name="info_times_minute">分</string>
-    <string name="down_from_market">市场下载</string>
-    <string name="down_from_website">网站下载</string>
-    <string name="exit">退出</string>
-    <string name="ok">确定</string>
-    <string name="textview">TextView</string>
-    <string name="send">发送</string>
-    <string name="cancel">取消</string>
-    <string name="donwload">下载</string>
+    <string name="info_times_hour">Hour</string>
+    <string name="info_times_minute">Minute</string>
+    <string name="down_from_market">Download from Google Play</string>
+    <string name="down_from_website">Download from website</string>
+    <string name="exit">Exit</string>
+    <string name="send">Send</string>
+    <string name="cancel">Cancel </string>
+    <string name="donwload">Download</string>
 
 </resources>

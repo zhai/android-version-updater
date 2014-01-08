@@ -81,8 +81,8 @@ public class Activity_Verison_Update extends Activity {
 					break;
 				case -1:
 					String error = msg.getData().getString("error");
-					Toast.makeText(Activity_Verison_Update.this, error, 1)
-							.show();
+					Toast.makeText(Activity_Verison_Update.this, error,
+							Toast.LENGTH_SHORT).show();
 					break;
 				default:
 					break;

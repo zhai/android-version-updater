@@ -10,6 +10,7 @@ import com.zhai.updater.R.id;
 import com.zhai.updater.R.layout;
 import com.zhai.updater.R.string;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -112,6 +113,7 @@ public class UpdateActivity extends Activity implements
 
 	}
 
+	@SuppressLint("WrongViewCast")
 	@Override
 	protected Dialog onCreateDialog(int id) {
 		switch (id) {
