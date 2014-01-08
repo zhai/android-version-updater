@@ -2,7 +2,7 @@ Android-Version-Updater
 =====
 
 ### 程序特点
-                1. 开源的项目二
+                1. 开源的项目
                 
                 2. 自动检查版本是否有更新，集成代码简单
                 
@@ -42,7 +42,7 @@ Android-Version-Updater
                 
 ### update.txt配置说明
 
-                version_name=1.0.20.1210 版本号
+                version_name=1.0.20.1210 \#版本号
                 force_update=0
                 apk=http://code.taobao.org/svn/zhaisoft/branches/ants-home/onekeyhost.apk
                 info=http://code.taobao.org/svn/zhaisoft/branches/ants-home/update.html
