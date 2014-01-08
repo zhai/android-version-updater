@@ -25,8 +25,6 @@ import com.zhai.utils.VersionUtil;
 
 public class UpdateUtil {
 
-	static int DIALOG_UPDATE = 100;
-
 	private static String currentVersionName = "";
 
 	public static boolean checkUpdate(Context context, Handler updateHandler) {
@@ -66,7 +64,8 @@ public class UpdateUtil {
 
 			if (UpdateConfig.version_name.compareTo(currentVersionName) != 0) {
 				// 有更新，弹出对话框
-				Message msg = updateHandler.obtainMessage(DIALOG_UPDATE, null);
+				Message msg = updateHandler.obtainMessage(
+						UpdateConfig.DIALOG_UPDATE, null);
 				updateHandler.sendMessage(msg);
 
 				return true;

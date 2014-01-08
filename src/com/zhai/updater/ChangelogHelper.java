@@ -19,6 +19,7 @@ import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
+import android.util.Config;
 import android.util.Log;
 
 public final class ChangelogHelper {
@@ -167,7 +168,7 @@ public final class ChangelogHelper {
 		 */
 		AlertDialog.Builder b = new AlertDialog.Builder(context);
 		b.setTitle(context.getResources().getString(R.string.app_name)
-				+ "更新日志:");
+				+ context.getResources().getString(R.string.app_changelog));
 		b.setMessage(sb);
 		b.setCancelable(true);
 		b.setPositiveButton(android.R.string.ok, null);
@@ -182,9 +183,7 @@ public final class ChangelogHelper {
 			String line;
 			SpannableStringBuilder sb = new SpannableStringBuilder();
 			while ((line = in.readLine()) != null) {
-
 				SpannableStringBuilder sbline;
-
 				int j = line.indexOf(":");
 				if (j > 0) {
 					String line_Version = line.substring(0, j - 5) + ":     \n";
@@ -200,7 +199,6 @@ public final class ChangelogHelper {
 								line_Version.length(),
 								Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 					}
-
 					// 添加更新日期
 					String line_date = "更新时间: "
 							+ line.substring(j - 4, j).substring(0, 2) + "月"
@@ -215,7 +213,6 @@ public final class ChangelogHelper {
 					sbline.append(sb_date);
 
 				} else {
-
 					if (line.length() > 1) {
 						line = "      ◆ " + line + "\n";
 					} else {
@@ -224,7 +221,6 @@ public final class ChangelogHelper {
 					sbline = new SpannableStringBuilder(line);
 					sbline.setSpan(new RelativeSizeSpan(0.75f), 0,
 							sbline.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
 				}
 				sb.append(sbline);
 				// sb.append(line).append('\n');
@@ -242,7 +238,8 @@ public final class ChangelogHelper {
 			try {
 				stream.close();
 			} catch (IOException e) {
-				// Ignore
+				if (BuildConfig.DEBUG)
+					e.printStackTrace();
 			}
 		}
 	}

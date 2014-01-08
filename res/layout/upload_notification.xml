@@ -20,9 +20,8 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
-            android:layout_weight="1"
             android:orientation="horizontal" >
 
             <TextView
@@ -48,7 +47,7 @@
                 android:gravity="center_vertical"
                 android:text="12:41"
                 android:textColor="@android:color/white"
-                android:textSize="12dp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <ProgressBar

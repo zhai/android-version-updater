@@ -93,7 +93,8 @@ public class UpdateActivity extends Activity implements
 					break;
 				case -1:
 					String error = msg.getData().getString("error");
-					Toast.makeText(UpdateActivity.this, error, 1).show();
+					Toast.makeText(UpdateActivity.this, error,
+							Toast.LENGTH_SHORT).show();
 					break;
 				default:
 					break;
@@ -108,9 +109,7 @@ public class UpdateActivity extends Activity implements
 		// setTheme(R.style.Theme.Sherlock.Light.WallPaper);
 		super.onCreate(savedInstanceState);
 		// 检测更新
-
 		UpdateUtil.checkUpdateThread(getApplicationContext(), updateHandler);
-
 	}
 
 	@SuppressLint("WrongViewCast")

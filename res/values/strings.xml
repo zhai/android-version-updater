@@ -3,5 +3,7 @@
 
     <string name="app_name">Android-Version-Updater</string>
     <string name="setting">Setting</string>
+    <string name="app_changelog">Change Log: </string>
+    
 
 </resources>

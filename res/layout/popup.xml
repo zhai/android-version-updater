@@ -51,7 +51,6 @@
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:gravity="center_vertical"
-                    android:hint="编写短信"
                     android:imeOptions="actionDone"
                     android:inputType="textCapSentences|textAutoCorrect|textMultiLine|textImeMultiLine"
                     android:maxLength="5000"
@@ -88,9 +87,7 @@
                 android:id="@+id/textview_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="350"
-                android:textColor="#111111"
-                android:textSize="10dp" />
+                android:textColor="#111111" />
 
             <TextView
                 android:id="@+id/textview_sendType"
@@ -99,9 +96,7 @@
                 android:layout_gravity="right"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="以短信发送"
-                android:textColor="#111111"
-                android:textSize="10dp" />
+                android:textColor="#111111" />
         </LinearLayout>
     </LinearLayout>
 
