@@ -135,37 +135,15 @@ public final class ChangelogHelper {
 			Log.d(TAG, "没有更新");
 			return;
 		}
-
 		// 继续后面的活动
+		showChangeLogDialogFromAssets(context);
+	}
+
+	public static void showChangeLogDialogFromAssets(Context context) {
 		CharSequence log = readAssetsFile(context);
 		final SpannableStringBuilder sb = new SpannableStringBuilder();
-
 		sb.append(log);
 
-		/*
-		 * String[] changes = context.getResources().getStringArray(resChanges);
-		 * String[] notes = resNotes > 0 ?
-		 * context.getResources().getStringArray( resNotes) : null;
-		 * 
-		 * 
-		 * 
-		 * 
-		 * for (String s : notes) { SpannableString ss = new SpannableString(s +
-		 * "\n"); int j = s.indexOf(":"); if (j > 0) { if
-		 * (!TextUtils.isEmpty(s)) { ss.setSpan(new StyleSpan(Typeface.BOLD), 0,
-		 * j, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE); } } sb.append(ss);
-		 * sb.append("\n"); } if (notes != null && notes.length > 0) {
-		 * sb.append("\n"); } for (String s : changes) { s = appname + " " +
-		 * s.replaceFirst(": ", ":\n* ").replaceAll(", ", "\n* ") + "\n";
-		 * SpannableString ss = new SpannableString(s); int j = s.indexOf(":");
-		 * if (j > 0) { ss.setSpan(new StyleSpan(Typeface.BOLD), 0, j,
-		 * Spanned.SPAN_EXCLUSIVE_EXCLUSIVE); } sb.append(ss); sb.append("\n");
-		 * }
-		 * 
-		 * 
-		 * sb.setSpan(new RelativeSizeSpan(0.75f), 0, sb.length(),
-		 * Spanned.SPAN_EXCLUSIVE_EXCLUSIVE); changes = null; notes = null;
-		 */
 		AlertDialog.Builder b = new AlertDialog.Builder(context);
 		b.setTitle(context.getResources().getString(R.string.app_name)
 				+ context.getResources().getString(R.string.app_changelog));
