@@ -158,7 +158,7 @@ public class Activity_Verison_Update extends Activity {
 						public void onClick(DialogInterface dialog, int which) {
 							// dialog.dismiss();
 							Uri uri = Uri
-									.parse("market://details?id=com.zhai.host");
+									.parse("market://details?id=com.zhai.network");
 							Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 							startActivity(intent);
 
