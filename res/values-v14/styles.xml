@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="DialogTheme" parent="@android:style/Theme.Holo.Light.Dialog">
         <item name="android:windowFrame">@null</item>
@@ -19,6 +19,10 @@
 
     <style name="ButtonBarButton" parent="@android:style/Widget.Holo.Light.Button.Borderless.Small"></style>
 
+    <style name="ButtonBarButtonGreen" parent="@android:style/Widget.Holo.Light.Button.Borderless.Small">
+        
+    </style>
+    
     <style name="NotificationIconPreferenceListItem" parent="@android:style/TextAppearance.Large"></style>
 
 </resources>
