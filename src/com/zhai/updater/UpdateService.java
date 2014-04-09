@@ -2,6 +2,7 @@ package com.zhai.updater;
 
 import java.text.SimpleDateFormat;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -18,6 +19,7 @@ public class UpdateService extends Service {
 	private int old_process = 0;
 	private boolean isFirstStart = false;
 
+	@SuppressLint("SimpleDateFormat")
 	public void onCreate() {
 		super.onCreate();
 		isFirstStart = true;
