@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Android版本更新器</string>
     <string name="setting">设置</string>
     <string name="app_changelog">更新日志: </string>
 </resources>
