@@ -31,7 +31,8 @@ public class BugReportActivity extends Activity {
 
 	private String getVersionName() {
 		try {
-			return this.getPackageManager().getPackageInfo(this.getPackageName(), 0).versionName;
+			return this.getPackageManager().getPackageInfo(
+					this.getPackageName(), 0).versionName;
 		} catch (Exception e) {
 			return "";
 
@@ -41,17 +42,19 @@ public class BugReportActivity extends Activity {
 	@Override
 	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.setContentView(R.layout.bug_report_view);
+		this.setContentView(R.layout.activity_bug_report);
 
-		this.getSupportActionBar().setDisplayUseLogoEnabled(false);
+		getActionBar().setDisplayUseLogoEnabled(false);
 
-		this.getSupportActionBar().setTitle(this.getString(R.string.app_name) + "出现未知问题");
+		this.getActionBar().setTitle(
+				this.getString(R.string.app_name) + "出现未知问题");
 		this.stackTrace = this.getIntent().getStringExtra(STACKTRACE);
 		this.reportTextView = (TextView) this.findViewById(R.id.report_text);
 
 		final String versionName = this.getVersionName();
 		if (this.reportTextView != null) {
-			this.reportTextView.setMovementMethod(ScrollingMovementMethod.getInstance());
+			this.reportTextView.setMovementMethod(ScrollingMovementMethod
+					.getInstance());
 			this.reportTextView.setClickable(false);
 			this.reportTextView.setLongClickable(false);
 			StringBuffer buf = new StringBuffer();
@@ -59,7 +62,8 @@ public class BugReportActivity extends Activity {
 			buf.append("程序出现异常\n");
 			buf.append("version: " + versionName + " \n");
 			buf.append("详细信息 " + " \n");
-			buf.append("---------------------------------------------------------- " + " \n");
+			buf.append("---------------------------------------------------------- "
+					+ " \n");
 			buf.append(this.stackTrace);
 			this.reportTextView.setText(buf.toString());
 		}
@@ -70,8 +74,10 @@ public class BugReportActivity extends Activity {
 	public boolean onCreateOptionsMenu(final Menu menu) {
 		// Used to put dark icons on light action bar
 		// boolean isLight = SampleList.THEME == R.style.Theme_Sherlock_Light;
-		menu.add(0, MENU_SEND, 0, "发送报告").setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-		menu.add(0, MENU_CANCEL, 0, "取消").setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		menu.add(0, MENU_SEND, 0, "发送报告").setShowAsAction(
+				MenuItem.SHOW_AS_ACTION_ALWAYS);
+		menu.add(0, MENU_CANCEL, 0, "取消").setShowAsAction(
+				MenuItem.SHOW_AS_ACTION_ALWAYS);
 		return true;
 	}
 
@@ -93,25 +99,41 @@ public class BugReportActivity extends Activity {
 
 	private void feedback(final int position) {
 		Intent sendIntent = new Intent(Intent.ACTION_SEND);
-		sendIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { "masterzxg@gmail.com" });
+		sendIntent.putExtra(Intent.EXTRA_EMAIL,
+				new String[] { "masterzxg@gmail.com" });
 		StringBuffer sb = new StringBuffer();
 
 		switch (position) {
 		case 0:
 			// 程序出错
-			sendIntent.putExtra(Intent.EXTRA_SUBJECT, this.getString(R.string.app_name) + "["
-					+ VersionUtil.getAppVersionName(BugReportActivity.this) + "]" + "【错误提交】");
+			sendIntent.putExtra(
+					Intent.EXTRA_SUBJECT,
+					this.getString(R.string.app_name)
+							+ "["
+							+ VersionUtil
+									.getAppVersionName(BugReportActivity.this)
+							+ "]" + "【错误提交】");
 			break;
 		case 1:
 			// 程序出错
-			sendIntent.putExtra(Intent.EXTRA_SUBJECT, this.getString(R.string.app_name) + "["
-					+ VersionUtil.getAppVersionName(BugReportActivity.this) + "]" + "【Host提交】");
+			sendIntent.putExtra(
+					Intent.EXTRA_SUBJECT,
+					this.getString(R.string.app_name)
+							+ "["
+							+ VersionUtil
+									.getAppVersionName(BugReportActivity.this)
+							+ "]" + "【Host提交】");
 			break;
 		case 2:
 			// 程序出错
 
-			sendIntent.putExtra(Intent.EXTRA_SUBJECT, this.getString(R.string.app_name) + "["
-					+ VersionUtil.getAppVersionName(BugReportActivity.this) + "]" + "【功能界面建议】");
+			sendIntent.putExtra(
+					Intent.EXTRA_SUBJECT,
+					this.getString(R.string.app_name)
+							+ "["
+							+ VersionUtil
+									.getAppVersionName(BugReportActivity.this)
+							+ "]" + "【功能界面建议】");
 			break;
 
 		default:
@@ -160,15 +182,19 @@ public class BugReportActivity extends Activity {
 	protected Dialog onCreateDialog(final int id) {
 		switch (id) {
 		case DIALOG_NOEMAILAPP:
-			AlertDialog.Builder alert_noemail = new Builder(BugReportActivity.this);
+			AlertDialog.Builder alert_noemail = new Builder(
+					BugReportActivity.this);
 			alert_noemail.setMessage("手机上没有安装任何电子邮件客户端，建议下载使用Gmail");
 			alert_noemail.setTitle("提示");
-			alert_noemail.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(final DialogInterface dialog, final int which) {
-					BugReportActivity.this.dismissDialog(DIALOG_NOEMAILAPP);
-				}
-			});
+			alert_noemail.setPositiveButton("确定",
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(final DialogInterface dialog,
+								final int which) {
+							BugReportActivity.this
+									.dismissDialog(DIALOG_NOEMAILAPP);
+						}
+					});
 			return alert_noemail.create();
 
 		}
