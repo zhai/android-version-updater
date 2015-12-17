@@ -19,12 +19,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    android {
+        useLibrary 'org.apache.http.legacy'
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
+    compile files('libs/zhaipubliclibrary.jar')
+    compile files('libs/httpcore-4.4.3.jar')
+    compile files('libs/android-async-http-1.4.6.jar')
+
+
 }
 
 
