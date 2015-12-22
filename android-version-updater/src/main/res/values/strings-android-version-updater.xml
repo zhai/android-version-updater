@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, home!</string>
+    <string name="info_times_hour">Hour</string>
+    <string name="info_times_minute">Minute</string>
+    <string name="down_from_market">Download from Google Play</string>
+    <string name="down_from_website">Download from website</string>
+    <string name="exit">Exit</string>
+    <string name="send">Send</string>
+    <string name="cancel">Cancel </string>
+    <string name="donwload">Download</string>
+
+    
+    
+
+    <string name="setting">Setting</string>
+    <string name="app_changelog">Change Log: </string>
+    
+    
+</resources>
