@@ -2,32 +2,32 @@ Android-Version-Updater
 =====
 
 ### 程序特点
-                1. 开源的项目
+                1. 开源
                 
-                2. 自动检查版本是否有更新，集成代码简单
+                2. android端配置非常简单，两句代码就搞定程序的配置
                 
-                3. 服务器端可以直接控制是否客户端强制更新
+                3. 服务器端配置非常灵活简单，不需要动态服务器
+                
                 
 
 
 ### 集成步骤：
-                1. 下载项目，导入eclispe,添加项目Android version updater引用
+                1. 客服端集成
+                A, Gradle配置 加一行，   
+                compile 'com.zhaisoft.lib.updater:android-version-updater:0.0.3'
+                B.在需要检测更新的地方添加代码，使用多线程，不会阻塞UI
+                AndroidUpdateSDK.getInstance().init(Activity_Tab.this,true,"http://hsl.yanzhen100.com/apk/android-version-updater/update.txt");
                 
-                2. 配置 Manifest.xml 添加如下节点
-                <!-- Android version updater -->
-                <activity
-                android:name="com.zhai.updater.Activity_Verison_Update"
-                android:label="@string/app_name"
-                android:theme="@style/DialogTheme" >
-                </activity>
-                <service android:name="com.zhai.updater.CheckUpdateService" />
-                <service android:name="com.zhai.updater.UpdateService" >
-                 </service>
+                init参数说明， 
+                参数1: 当前activity的context 
+                参数2：如果没有新版本，是否提示当前已经是最新版本，主要用于app的设置菜单手动检测更新用
+                true 提示
+                false 不提示
+                参数3: updata.txt的路径， 服务器的配置文件
+                
+                
                  
-                3. 添加服务器的配置文件， 建立/src/update.config 文件
-                文件格式如下：Update_Url=http://code.taobao.org/svn/zhaisoft/branches/zhaihost/zhaihost_update.txt 
-
-                4.配置服务器的update.txt文件
+                3. update.txt文件
                 文件格式说明： 
                 //要空一格
 
