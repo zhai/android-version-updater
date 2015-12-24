@@ -1,6 +1,7 @@
 Android-Version-Updater 
 =====
 
+
 ### 程序特点
                 1. 开源
                 
@@ -40,12 +41,11 @@ Android-Version-Updater
 
 
                 
-### update.txt配置说明
+##版本迭代
+###0.0.3 beta
+* 第一个测试版本
+* 修复强制升级情况下点击退出，程序无限重启的问题
 
-                version_name=1.0.20.1210 \#版本号
-                force_update=0
-                apk=http://code.taobao.org/svn/zhaisoft/branches/ants-home/onekeyhost.apk
-                info=http://code.taobao.org/svn/zhaisoft/branches/ants-home/update.html
 
 
 
