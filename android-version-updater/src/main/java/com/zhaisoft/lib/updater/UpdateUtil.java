@@ -92,7 +92,7 @@ public class UpdateUtil {
             URL _url = new URL(url);
             HttpURLConnection conn = (HttpURLConnection) _url.openConnection(); //使用URL打开一个链接
             conn.setDoInput(true); //允许输入流，即允许下载
-            conn.setDoOutput(true); //允许输出流，即允许上传
+            //conn.setDoOutput(true); //允许输出流，即允许上传
             conn.setUseCaches(false); //不使用缓冲
             conn.setRequestMethod("GET"); //使用get请求
             //response = client.execute(get);
@@ -131,6 +131,7 @@ public class UpdateUtil {
                 fileOutputStream.close();
             }
         } catch (Exception e) {
+            e.printStackTrace();
             sendMsg(-1, 0, updateHandler);
         }
     }

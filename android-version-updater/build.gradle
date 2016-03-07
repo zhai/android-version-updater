@@ -26,14 +26,14 @@ dependencies {
     compile files('libs/android-async-http-1.4.6.jar')
 
     //我的第三方库
-    compile 'com.zhaisoft.lib.utils:zhai-library-utils:0.0.7'
+    compile 'com.zhaisoft.lib.utils:zhai-library-utils:0.0.10'
 }
-
+//上传到服务器的配置
 
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "0.0.2"
+version = "0.0.3"
 
 
 def siteUrl = 'https://github.com/zhaizi/android-version-updater'                        // #CONFIG# // project homepage

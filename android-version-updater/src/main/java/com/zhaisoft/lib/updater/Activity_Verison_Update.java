@@ -6,6 +6,7 @@ import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -301,8 +302,27 @@ public class Activity_Verison_Update extends BaseCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialog,
                                                     int which) {
-                                    android.os.Process
-                                            .killProcess(android.os.Process.myPid());
+                                    dialog.dismiss();
+                                    finish();
+
+//                                    Intent intent = new Intent(Intent.ACTION_MAIN);
+//                                    intent.addCategory(Intent.CATEGORY_HOME);
+//                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                                    startActivity(intent);
+
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                                        finishAffinity();
+                                    } else {
+                                        Intent intent = new Intent(Intent.ACTION_MAIN);
+                                        intent.addCategory(Intent.CATEGORY_HOME);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(intent);
+                                    }
+//                                    int pid = android.os.Process.myPid();
+//                                    android.os.Process.killProcess(pid);
+//                                    Intent intent = new Intent(Intent.ACTION_MAIN);
+//                                    intent.addCategory(Intent.CATEGORY_HOME);
+//                                    startActivity(intent);
                                 }
                             });
                 } else {

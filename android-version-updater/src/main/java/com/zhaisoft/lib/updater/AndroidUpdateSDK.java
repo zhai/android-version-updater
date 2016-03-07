@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import com.zhaisoft.lib.utils.LogUtil;
+
 import java.util.List;
 
 public class AndroidUpdateSDK {
@@ -33,11 +35,19 @@ public class AndroidUpdateSDK {
 
 		CheckUpdateServiceIntent.putExtra(MESSAGE_IN, "Activity传给serive的参数");
 		context.startService(CheckUpdateServiceIntent);
-		Log.i(TAG, "启动一个服务");
-
+		LogUtil.i(TAG, "启动一个服务");
 	}
+//	boolean needTips = intent.getBooleanExtra("needTips", false);
+//	String url = intent.getStringExtra("url");
 
-	public void init(Context _context, boolean needTips) {
+
+	/**
+	 *
+	 * @param _context
+	 * @param needTips 是否需要弹出提示  true:是 已经是最新版本  false:不提出提示
+	 * @param upgradeUrl 检测更新的网址
+     */
+	public void init(Context _context, boolean needTips,String upgradeUrl) {
 		this.context = _context;
 		// 开启一个service
 		Intent CheckUpdateServiceIntent = new Intent(context,
@@ -45,6 +55,7 @@ public class AndroidUpdateSDK {
 
 		CheckUpdateServiceIntent.putExtra(MESSAGE_IN, "Activity传给serive的参数");
 		CheckUpdateServiceIntent.putExtra("needTips", needTips);
+		CheckUpdateServiceIntent.putExtra("url", upgradeUrl);
 		context.startService(CheckUpdateServiceIntent);
 		Log.i(TAG, "启动一个服务");
 

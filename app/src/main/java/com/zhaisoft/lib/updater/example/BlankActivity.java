@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.zhaisoft.lib.updater.AndroidUpdateSDK;
+
 public class BlankActivity extends AppCompatActivity {
 
     @Override
@@ -26,6 +28,9 @@ public class BlankActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        AndroidUpdateSDK.getInstance().init(BlankActivity.this,true,"http://hsl.yanzhen100.com/apk/ads-home/normal-version/update.txt");
+
     }
 
     @Override

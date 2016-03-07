@@ -62,9 +62,9 @@ public class HttpUtil {
             URL url = new URL(urlString); //URL对象
             conn = (HttpURLConnection) url.openConnection(); //使用URL打开一个链接
             conn.setDoInput(true); //允许输入流，即允许下载
-            conn.setDoOutput(true); //允许输出流，即允许上传
+            //conn.setDoOutput(true); //允许输出流，即允许上传
             conn.setUseCaches(false); //不使用缓冲
-            conn.setRequestMethod("GET"); //使用get请求
+            //conn.setRequestMethod("GET"); //使用get请求
             is = conn.getInputStream();   //获取输入流，此时才真正建立链接
             return is;
 
@@ -78,17 +78,17 @@ public class HttpUtil {
 
             throw new IOException();
         } finally {
-            if (is != null) {
-                try {
-                    is.close();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                conn.disconnect();
-            }
+//            if (is != null) {
+//                try {
+//                    is.close();
+//                } catch (IOException e) {
+//                    // TODO Auto-generated catch block
+//                    e.printStackTrace();
+//                }
+//            }
+//            if (conn != null) {
+//                conn.disconnect();
+//            }
         }
 
 
