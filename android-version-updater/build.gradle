@@ -33,7 +33,7 @@ dependencies {
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "0.0.4"
+version = "0.0.5"
 
 
 def siteUrl = 'https://github.com/zhaizi/android-version-updater'                        // #CONFIG# // project homepage
