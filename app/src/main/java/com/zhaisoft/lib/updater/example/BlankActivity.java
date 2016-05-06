@@ -31,6 +31,8 @@ public class BlankActivity extends AppCompatActivity {
 
         AndroidUpdateSDK.getInstance().init(BlankActivity.this,true,"http://hsl.yanzhen100.com/apk/ads-home/normal-version/update.txt");
 
+
+
     }
 
     @Override

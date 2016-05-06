@@ -44,4 +44,10 @@
         <item name="android:textColor">#fff</item>
     </style>
 
+
+    <style name="LineTextAppearance">
+        <item name="android:textColor">@color/my_fault</item>
+    </style>
+
+
 </resources>
