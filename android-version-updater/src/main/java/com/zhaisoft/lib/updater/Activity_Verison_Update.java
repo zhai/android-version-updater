@@ -19,6 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.daimajia.numberprogressbar.NumberProgressBar;
 import com.zhaisoft.lib.utils.LogUtil;
 import com.zhaisoft.lib.utils.SystemUtil;
 
@@ -28,7 +29,7 @@ public class Activity_Verison_Update extends BaseCompatActivity {
 
     final int DIALOG_EXIT = 1000;
     // 以下部分是添加的自动更新
-    private ProgressBar pb;
+    private NumberProgressBar pb;
     private TextView downloading_kb;
     private TextView downloading_percent;
 
@@ -231,11 +232,12 @@ public class Activity_Verison_Update extends BaseCompatActivity {
                 LayoutInflater inflater2 = LayoutInflater
                         .from(getApplicationContext());
                 View view2 = inflater2.inflate(R.layout.update_host_dialog, null);
-                pb = (ProgressBar) view2.findViewById(R.id.down_pb);
+                pb = (NumberProgressBar) view2.findViewById(R.id.down_pb);
                 downloading_kb = (TextView) view2.findViewById(R.id.downloading_kb);
                 downloading_percent = (TextView) view2
                         .findViewById(R.id.downloading_percent);
                 Builder builder = new Builder(Activity_Verison_Update.this);
+                downloading_percent.setVisibility(View.GONE);
                 builder.setView(view2);
                 builder.setTitle("版本更新进度提示");
 
