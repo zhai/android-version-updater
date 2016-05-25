@@ -2,23 +2,38 @@ Android-Version-Updater
 =====
 
 
+
+
+
 ### 程序特点
                 1. 开源
                 
                 2. android端配置非常简单，两句代码就搞定程序的配置
                 
-                3. 服务器端配置非常灵活简单，不需要动态服务器
-                
-                
+                3. 服务器端配置非常灵活简单，不需要动态服务器，只需要放一个txt文本文件即可
+
+                4。
+
+
+
+
 
 
 ### 集成步骤：
                 1. 客服端集成
                 A, Gradle配置 加一行，   
-                compile 'com.zhaisoft.lib.updater:android-version-updater:0.0.3'
-                B.在需要检测更新的地方添加代码，使用多线程，不会阻塞UI
+
+
+```groovy
+compile 'com.zhaisoft.lib.updater:android-version-updater:0.0.13'
+```
+
+
+                B.调用方法
+
                 AndroidUpdateSDK.getInstance().init(Activity_Tab.this,true,"http://hsl.yanzhen100.com/apk/android-version-updater/update.txt");
-                
+
+
                 init参数说明， 
                 参数1: 当前activity的context 
                 参数2：如果没有新版本，是否提示当前已经是最新版本，主要用于app的设置菜单手动检测更新用
@@ -42,6 +57,11 @@ Android-Version-Updater
 
                 
 ##版本迭代
+
+###0.0.13 beta
+* 更新UI
+* 更新多个启动方法
+
 ###0.0.3 beta
 * 第一个测试版本
 * 修复强制升级情况下点击退出，程序无限重启的问题
