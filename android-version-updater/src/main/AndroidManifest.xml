@@ -72,8 +72,6 @@
         </activity>
 
 
-
-
         <service android:name="com.zhaisoft.lib.updater.CheckUpdateService" />
         <service android:name="com.zhaisoft.lib.updater.UpdateService" >
         </service>
