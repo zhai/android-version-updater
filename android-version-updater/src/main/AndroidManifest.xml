@@ -2,7 +2,7 @@
     package="com.zhaisoft.lib.updater">
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="true" android:hardwareAccelerated="true"
         android:label="@string/app_name"
         android:supportsRtl="true">
 

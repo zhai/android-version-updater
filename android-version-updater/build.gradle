@@ -16,13 +16,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
+    //为了解决BuildConfig 的问题
+
+
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
 
-    compile 'com.android.support:design:23.3.0'
+    compile 'com.android.support:design:23.2.1'
     compile 'com.daimajia.numberprogressbar:library:1.2@aar'
 
     //我的第三方库
@@ -33,7 +38,7 @@ dependencies {
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "0.1.1"
+version = "0.1.2"
 
 
 def siteUrl = 'https://github.com/zhaizi/android-version-updater'                        // #CONFIG# // project homepage

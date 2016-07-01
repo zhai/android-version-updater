@@ -5,7 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.zhaisoft.lib.utils.LogUtil;
+
+import com.zhaisoft.lib.updater.util.LogUtil;
 
 import java.util.List;
 

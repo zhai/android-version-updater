@@ -61,7 +61,7 @@
 
 
 
-    <application
+    <applicationxxx
         android:name=".BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -87,6 +87,6 @@
         </activity>
 
 
-    </application>
+    </applicationxxx>
 
 </manifest>

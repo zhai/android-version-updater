@@ -10,8 +10,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.zhaisoft.lib.updater.AndroidUpdateSDK;
+import com.zhaisoft.lib.updater.BaseCompatActivity;
+import com.zhaisoft.lib.updater.util.HardWareUtil;
+import com.zhaisoft.lib.updater.util.LogUtil;
 
-public class BlankActivity extends AppCompatActivity {
+public class BlankActivity extends BaseCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,10 @@ public class BlankActivity extends AppCompatActivity {
             }
         });
 
+
+//        LogUtil.d("111","hi");
+//
+//        showToast(new HardWareUtil(getApplicationContext()).getUdid(this));
         AndroidUpdateSDK.getInstance().init(BlankActivity.this,true,"http://hsl.yanzhen100.com/apk/ads-home/normal-version/update.txt");
 
 

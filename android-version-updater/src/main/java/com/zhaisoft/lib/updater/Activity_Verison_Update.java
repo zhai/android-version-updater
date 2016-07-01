@@ -15,13 +15,12 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.webkit.WebView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.numberprogressbar.NumberProgressBar;
-import com.zhaisoft.lib.utils.LogUtil;
-import com.zhaisoft.lib.utils.SystemUtil;
+import com.zhaisoft.lib.updater.util.LogUtil;
+import com.zhaisoft.lib.updater.util.SystemUtil;
 
 import java.io.File;
 
@@ -94,6 +93,7 @@ public class Activity_Verison_Update extends BaseCompatActivity {
                                 + getResources().getString(R.string.app_name)
                                 + ".apk";
                         String cmd = "adb install -r " + apkFilePath;
+
 
                         LogUtil.e("update", "cmd=" + cmd);
 

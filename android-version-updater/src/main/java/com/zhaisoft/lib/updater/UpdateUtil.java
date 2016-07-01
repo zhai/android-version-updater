@@ -5,11 +5,10 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 
-import com.zhaisoft.lib.utils.NetUtil;
-import com.zhaisoft.lib.utils.PropertyUtil;
-import com.zhaisoft.lib.utils.VersionUtil;
 
-import org.apache.http.HttpStatus;
+import com.zhaisoft.lib.updater.util.NetUtil;
+import com.zhaisoft.lib.updater.util.PropertyUtil;
+import com.zhaisoft.lib.updater.util.VersionUtil;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -99,7 +98,7 @@ public class UpdateUtil {
             responseCode = conn.getResponseCode();
 
 
-            if (responseCode == HttpStatus.SC_NOT_FOUND) {
+            if (responseCode == HttpURLConnection.HTTP_NOT_FOUND) {
                 sendMsg(-404, 0, updateHandler); // 文件不存在
                 return;
             }

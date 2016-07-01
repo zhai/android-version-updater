@@ -10,8 +10,8 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.zhaisoft.lib.utils.PropertyUtil;
-import com.zhaisoft.lib.utils.VersionUtil;
+import com.zhaisoft.lib.updater.util.PropertyUtil;
+import com.zhaisoft.lib.updater.util.VersionUtil;
 
 import java.io.InputStream;
 import java.util.Properties;
@@ -38,7 +38,6 @@ public class CheckUpdateService extends IntentService {
         String url = intent.getStringExtra("url");
         checkUpdate(needTips, url);
     }
-
 
 
     private boolean checkUpdate(boolean needTips, String update_url) {
