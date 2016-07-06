@@ -95,7 +95,7 @@ public class HardWareUtil {
 
     public  HardWareUtil(Context context) {
 
-        LogUtil.d(TAG, "construct hardware");
+        LogUtil2.d(TAG, "construct hardware");
         disableConnectionReuseIfNecessary();
 
 
@@ -217,7 +217,7 @@ public class HardWareUtil {
         if (screenHeight == 0 && context != null) {
             getScreenSize(context);
 
-            LogUtil.d(TAG, "ScreenScale, width=" + screenWidth + ", height=" + screenHeight + ", densityDpi=" + densityDpi);
+            LogUtil2.d(TAG, "ScreenScale, width=" + screenWidth + ", height=" + screenHeight + ", densityDpi=" + densityDpi);
         }
     }
 
@@ -342,14 +342,14 @@ public class HardWareUtil {
 
 
     public static int[] getSquareScale(double screenWidthRatio) {
-        LogUtil.i(TAG, "getSquareScale :: screenWidth = " + screenWidth);
+        LogUtil2.i(TAG, "getSquareScale :: screenWidth = " + screenWidth);
         int width = (int) (screenWidth * screenWidthRatio);
         int height = width;
         return new int[]{width, height};
     }
 
     public static int[] getSquareScale(Context con, double screenWidthRatio) {
-        LogUtil.i(TAG, "getSquareScale :: screenWidth = " + screenWidth);
+        LogUtil2.i(TAG, "getSquareScale :: screenWidth = " + screenWidth);
         int width = (int) (getScreenWidth(con) * screenWidthRatio);
         int height = width;
         return new int[]{width, height};
@@ -732,7 +732,7 @@ public class HardWareUtil {
         getDeviceId(con);
 
 
-        LogUtil.e(TAG, " device info: BOARD=" + Build.BOARD + ", BRAND=" + Build.BRAND + ", DEVICE=" + Build.DEVICE
+        LogUtil2.e(TAG, " device info: BOARD=" + Build.BOARD + ", BRAND=" + Build.BRAND + ", DEVICE=" + Build.DEVICE
                 + ", DISPLAY=" + Build.DISPLAY
                 // +", HARDWARE="+Build.HARDWARE
                 + ", ID=" + Build.ID + ", MANUFACTURER=" + Build.MANUFACTURER + ", MODEL=" + Build.MODEL
@@ -982,7 +982,7 @@ public class HardWareUtil {
                 if (netType == kWapType_172) proxy = "10.0.0.172";
                 else proxy = "10.0.0.200";
 
-                LogUtil.e(TAG, "use proxy----:" + proxy);
+                LogUtil2.e(TAG, "use proxy----:" + proxy);
                 Proxy p = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxy, 80));
                 return makeConnection(url, p);
             }
@@ -1098,10 +1098,10 @@ public class HardWareUtil {
     }
 
     public static void sendMessage(Handler targetHandler, int what, Object obj) {
-        LogUtil.d("Eagle", "hardware sendMessage");
+        LogUtil2.d("Eagle", "hardware sendMessage");
         try {
             if (targetHandler != null) {
-                LogUtil.d("Eagle", "targetHandler!=null ");
+                LogUtil2.d("Eagle", "targetHandler!=null ");
                 Message message = Message.obtain(targetHandler, what, obj);
                 message.sendToTarget();
             }
@@ -1162,7 +1162,7 @@ public class HardWareUtil {
 
     public static boolean needRotateActivity() {
 
-        LogUtil.d(TAG, "Build.VERSION.SDK_INT =" + Build.VERSION.SDK_INT);
+        LogUtil2.d(TAG, "Build.VERSION.SDK_INT =" + Build.VERSION.SDK_INT);
         if (needRotate180Layout() || Build.VERSION.SDK_INT < 11) /*��������ĳ���ֻ�*/
             return true;
         else
@@ -1237,7 +1237,7 @@ public class HardWareUtil {
      * @return last elaspse time, milliseconds
      */
     public static long resetScreenOffElapseTime() {
-        LogUtil.e(TAG, "resetScreenOffElapseTime, ScreenOffTime=" + ScreenOffTime);
+        LogUtil2.e(TAG, "resetScreenOffElapseTime, ScreenOffTime=" + ScreenOffTime);
         if (ScreenOffTime != 0) {
             long elapseTime = System.currentTimeMillis() - ScreenOffTime;
             ScreenOffTime = 0;

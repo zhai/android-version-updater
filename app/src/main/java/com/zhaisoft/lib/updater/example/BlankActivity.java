@@ -3,7 +3,6 @@ package com.zhaisoft.lib.updater.example;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
@@ -11,8 +10,7 @@ import android.view.MenuItem;
 
 import com.zhaisoft.lib.updater.AndroidUpdateSDK;
 import com.zhaisoft.lib.updater.BaseCompatActivity;
-import com.zhaisoft.lib.updater.util.HardWareUtil;
-import com.zhaisoft.lib.updater.util.LogUtil;
+import com.zhaisoft.lib.updater.log.LogUtil;
 
 public class BlankActivity extends BaseCompatActivity {
 
@@ -33,11 +31,13 @@ public class BlankActivity extends BaseCompatActivity {
         });
 
 
-//        LogUtil.d("111","hi");
+//        LogUtil2.d("111","hi");
 //
 //        showToast(new HardWareUtil(getApplicationContext()).getUdid(this));
         AndroidUpdateSDK.getInstance().init(BlankActivity.this,true,"http://hsl.yanzhen100.com/apk/ads-home/normal-version/update.txt");
 
+
+        LogUtil.e("hi");
 
 
     }

@@ -10,9 +10,9 @@ import java.util.List;
 /**
  * 更新LogCat类，增加两个方法
  */
-public class LogUtil {
+public class LogUtil2 {
 
-    private static final String TAG = "LogUtil-Zhai";
+    private static final String TAG = "LogUtil2-Zhai";
     public static boolean bLog = BuildConfig.DEBUG;
 
 

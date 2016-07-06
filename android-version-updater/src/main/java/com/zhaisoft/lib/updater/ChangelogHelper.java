@@ -17,8 +17,6 @@ import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
 
-import com.zhaisoft.lib.updater.util.LogUtil;
-
 import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.IOException;

@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.util.Log;
 
 
-import com.zhaisoft.lib.updater.util.LogUtil;
+import com.zhaisoft.lib.updater.util.LogUtil2;
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class AndroidUpdateSDK {
 
 		CheckUpdateServiceIntent.putExtra(MESSAGE_IN, "Activity传给serive的参数");
 		context.startService(CheckUpdateServiceIntent);
-		LogUtil.i(TAG, "启动一个服务");
+		LogUtil2.i(TAG, "启动一个服务");
 	}
 //	boolean needTips = intent.getBooleanExtra("needTips", false);
 //	String url = intent.getStringExtra("url");

@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    buildToolsVersion '23.0.3'
 
     defaultConfig {
         minSdkVersion 15
@@ -38,7 +38,7 @@ dependencies {
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "0.1.2"
+version = "0.1.4"
 
 
 def siteUrl = 'https://github.com/zhaizi/android-version-updater'                        // #CONFIG# // project homepage

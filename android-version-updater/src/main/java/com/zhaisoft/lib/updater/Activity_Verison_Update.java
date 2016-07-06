@@ -19,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.numberprogressbar.NumberProgressBar;
-import com.zhaisoft.lib.updater.util.LogUtil;
+import com.zhaisoft.lib.updater.util.LogUtil2;
 import com.zhaisoft.lib.updater.util.SystemUtil;
 
 import java.io.File;
@@ -95,7 +95,7 @@ public class Activity_Verison_Update extends BaseCompatActivity {
                         String cmd = "adb install -r " + apkFilePath;
 
 
-                        LogUtil.e("update", "cmd=" + cmd);
+                        LogUtil2.e("update", "cmd=" + cmd);
 
                         if (SystemUtil.runRootCmd(cmd)) {
                             // 安装成功
