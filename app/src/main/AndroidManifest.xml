@@ -62,7 +62,7 @@
 
 
     <applicationxxx
-        android:name=".BaseApplication"
+        android:name="com.zhaisoft.lib.updater.example.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -72,16 +72,21 @@
             android:name=".BlankActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
+
         </activity>
 
 
         <activity
-            android:name="com.zhaisoft.lib.updater.exception.BugActivity"
+            android:name=".BugActivity"
             android:label="@string/app_name">
 
         </activity>
