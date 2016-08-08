@@ -24,7 +24,7 @@ Android-Version-Updater
 
 
 ```groovy
-compile 'com.zhaisoft.lib.updater:android-version-updater:0.0.13'
+compile 'com.zhaisoft.lib.updater:android-version-updater:0.1.15'
 ```
 
 
@@ -57,9 +57,10 @@ compile 'com.zhaisoft.lib.updater:android-version-updater:0.0.13'
                 
 ##版本迭代
 
-###0.0.13 beta
+###0.1.15 beta
 * 更新UI
 * 更新多个启动方法
+* 添加了LogUtil工具类，可以配置在Debug模式中打印日志，release模式中不打印日志
 
 ###0.0.3 beta
 * 第一个测试版本
