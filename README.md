@@ -57,6 +57,11 @@ compile 'com.zhaisoft.lib.updater:android-version-updater:0.1.15'
                 
 ##版本迭代
 
+###0.1.18 beta
+* 去掉不必要的权限，只保留两个权限，网络和下载权限
+* 修改多进程下载的Bug
+* 优化代码
+
 ###0.1.15 beta
 * 更新UI
 * 更新多个启动方法
