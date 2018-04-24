@@ -9,6 +9,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
+
         versionName "0.1.0"
     }
     buildTypes {
@@ -22,6 +23,8 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
+
+
     implementation 'com.android.support:design:26.1.0'
     //compile 'com.zhaisoft.lib.updater:android-version-updater:0.1.3'
     //compile prp

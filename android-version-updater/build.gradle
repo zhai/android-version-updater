@@ -19,7 +19,7 @@ android {
     }
 
     lintOptions {
-        abortOnError false
+        //abortOnError false
 
     }
 
@@ -35,7 +35,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation  'junit:junit:4.12'
     implementation 'com.android.support:design:26.1.0'
-    implementation 'com.daimajia.numberprogressbar:library:1.4@aar'
+
 
     //我的第三方库
 
@@ -48,7 +48,7 @@ dependencies {
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "0.1.8"
+version = "0.1.14"
 
 
 def siteUrl = 'https://github.com/zhaizi/android-version-updater'                        // #CONFIG# // project homepage

@@ -3,51 +3,54 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:padding="10dp" >
-
+    android:padding="10dp">
 
 
     <!--<ProgressBar-->
-        <!--android:id="@+id/down_pb"-->
-        <!--style="?android:attr/progressBarStyleHorizontal"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="5dp"-->
-        <!--android:max="100" />-->
+    <!--android:id="@+id/down_pb"-->
+    <!--style="?android:attr/progressBarStyleHorizontal"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="5dp"-->
+    <!--android:max="100" />-->
 
 
-    <com.daimajia.numberprogressbar.NumberProgressBar android:layout_margin="5dp"
-        android:id="@+id/down_pb"  style="@style/NumberProgressBar_Default"
+    <com.daimajia.numberprogressbar.NumberProgressBar
+        android:id="@+id/down_pb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:layout_margin="5dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:layout_marginRight="5dp"
-        android:orientation="horizontal" >
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:orientation="horizontal">
 
 
-        <TextView android:textColor="@color/black"
+        <TextView
             android:id="@+id/downloading_percent"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="0%" />
+            android:text="0%"
+            android:textColor="@color/black" />
 
 
         <TextView
             android:id="@+id/_blank"
-            android:layout_width="0dp" android:textColor="@color/black"
+            android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textColor="@color/black" />
+
         <TextView
-            android:id="@+id/downloading_kb" android:textSize="10sp"
+            android:id="@+id/downloading_kb"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent" android:textColor="@color/gray"
-            android:text="" />
+            android:layout_height="fill_parent"
+            android:text=""
+            android:textColor="@color/gray"
+            android:textSize="10sp" />
 
     </LinearLayout>
-
-
 
 
 </LinearLayout>
