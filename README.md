@@ -10,7 +10,7 @@ Android-Version-Updater
                 
                 2. android端配置非常简单，两句代码就搞定程序的配置
                 
-                3. 服务器端配置非常灵活简单，不需要动态服务器，只需要放一个txt文本文件即可
+                3. 服务器端配置非常灵活简单，不需要动态服务器，只需放一个txt文本文件即可
 
 
 
@@ -24,7 +24,7 @@ Android-Version-Updater
 
 
 ```groovy
-compile 'com.zhaisoft.lib.updater:android-version-updater:0.1.15'
+compile 'com.zhaisoft.lib.updater:android-version-updater:0.1.18'
 ```
 
 
@@ -61,6 +61,7 @@ compile 'com.zhaisoft.lib.updater:android-version-updater:0.1.15'
 * 去掉不必要的权限，只保留两个权限，网络和下载权限
 * 修改多进程下载的Bug
 * 优化代码
+* 升级支持Android N
 
 ###0.1.15 beta
 * 更新UI
