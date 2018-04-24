@@ -10,152 +10,137 @@ import java.io.InputStreamReader;
 
 public class DnsManager {
 
-	private static final String TAG = "DnsManager";
+    private static final String TAG = "DnsManager";
 
-	/**
-	 * 得到DNS信息
-	 * 
-	 * @author zhaizi
-	 */
-	public static String[] getDns(Context context) throws IOException,
-			InterruptedException {
 
-		// 第一个
-		StringBuffer sb = new StringBuffer();
-		String cmd = String.format("getprop net.dns%d ", 1);
-		Process p = Runtime.getRuntime().exec(cmd);
+    public static String[] getDns(Context context) throws IOException,
+            InterruptedException {
 
-		DataOutputStream os = new DataOutputStream(p.getOutputStream());
-		os.flush();
-		os.close();
-		InputStreamReader r = new InputStreamReader(p.getInputStream());
-		final char buf[] = new char[1024];
-		int read = 0;
-		while ((read = r.read(buf)) != -1) {
-			if (sb != null)
-				sb.append(buf, 0, read);
-		}
+        // 第一个
+        StringBuffer sb = new StringBuffer();
+        String cmd = String.format("getprop net.dns%d ", 1);
+        Process p = Runtime.getRuntime().exec(cmd);
 
-		// 第二个
-		StringBuffer sb2 = new StringBuffer();
-		String cmd2 = "getprop net.dns2";
-		Process p2 = Runtime.getRuntime().exec(cmd2);
+        DataOutputStream os = new DataOutputStream(p.getOutputStream());
+        os.flush();
+        os.close();
+        InputStreamReader r = new InputStreamReader(p.getInputStream());
+        final char buf[] = new char[1024];
+        int read = 0;
+        while ((read = r.read(buf)) != -1) {
+            if (sb != null)
+                sb.append(buf, 0, read);
+        }
 
-		DataOutputStream os2 = new DataOutputStream(p2.getOutputStream());
+        // 第二个
+        StringBuffer sb2 = new StringBuffer();
+        String cmd2 = "getprop net.dns2";
+        Process p2 = Runtime.getRuntime().exec(cmd2);
 
-		os2.flush();
-		os2.close();
-		InputStreamReader r2 = new InputStreamReader(p2.getInputStream());
-		final char buf2[] = new char[1024];
-		int read2 = 0;
-		while ((read2 = r2.read(buf2)) != -1) {
-			if (sb2 != null)
-				sb2.append(buf2, 0, read2);
-		}
+        DataOutputStream os2 = new DataOutputStream(p2.getOutputStream());
 
-		return new String[] { sb.toString().replace("\n", ""),
-				sb2.toString().replace("\n", "") };
-	}
+        os2.flush();
+        os2.close();
+        InputStreamReader r2 = new InputStreamReader(p2.getInputStream());
+        final char buf2[] = new char[1024];
+        int read2 = 0;
+        while ((read2 = r2.read(buf2)) != -1) {
+            if (sb2 != null)
+                sb2.append(buf2, 0, read2);
+        }
 
-	/**
-	 * 得到DNS信息
-	 * 
-	 * @author zhaizi
-	 */
-	public static String[] getDns_nouser(Context context) {
-		WifiManager wifiManager = (WifiManager) context
-				.getSystemService(context.WIFI_SERVICE);
-		String dns1 = intToIp(wifiManager.getDhcpInfo().dns1);
-		String dns2 = intToIp(wifiManager.getDhcpInfo().dns2);
-		return new String[] { dns1, dns2 };
-	}
+        return new String[]{sb.toString().replace("\n", ""),
+                sb2.toString().replace("\n", "")};
+    }
 
-	public static boolean setWIFIDNS(String ip, int index) throws IOException,
-			InterruptedException {
+    public static String[] getDns_nouser(Context context) {
+        WifiManager wifiManager = (WifiManager) context
+                .getSystemService(context.WIFI_SERVICE);
+        String dns1 = intToIp(wifiManager.getDhcpInfo().dns1);
+        String dns2 = intToIp(wifiManager.getDhcpInfo().dns2);
+        return new String[]{dns1, dns2};
+    }
 
-		String cmd = String.format("setprop net.dns%d %s", index, ip);
+    public static boolean setWIFIDNS(String ip, int index) throws IOException,
+            InterruptedException {
 
-		Log.i(TAG, cmd);
-		Process p = Runtime.getRuntime().exec("su");
+        String cmd = String.format("setprop net.dns%d %s", index, ip);
 
-		// Attempt to write a file to a root-only
-		DataOutputStream os = new DataOutputStream(p.getOutputStream());
-		os.writeBytes(cmd + "\n");
+        Log.i(TAG, cmd);
+        Process p = Runtime.getRuntime().exec("su");
 
-		// Close the terminal
-		os.writeBytes("exit\n");
-		os.flush();
+        // Attempt to write a file to a root-only
+        DataOutputStream os = new DataOutputStream(p.getOutputStream());
+        os.writeBytes(cmd + "\n");
 
-		p.waitFor();
-		if (p.exitValue() != 255) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+        // Close the terminal
+        os.writeBytes("exit\n");
+        os.flush();
 
-	public static boolean setGPRSDNS(String ip, int index) throws IOException,
-			InterruptedException {
+        p.waitFor();
+        if (p.exitValue() != 255) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-		String cmd = String.format("setprop net.rmnet0.dns%d %s", index, ip);
+    public static boolean setGPRSDNS(String ip, int index) throws IOException,
+            InterruptedException {
 
-		Log.i(TAG, cmd);
-		Process p = Runtime.getRuntime().exec("su");
+        String cmd = String.format("setprop net.rmnet0.dns%d %s", index, ip);
 
-		// Attempt to write a file to a root-only
-		DataOutputStream os = new DataOutputStream(p.getOutputStream());
-		os.writeBytes(cmd + "\n");
+        Log.i(TAG, cmd);
+        Process p = Runtime.getRuntime().exec("su");
 
-		// Close the terminal
-		os.writeBytes("exit\n");
-		os.flush();
+        // Attempt to write a file to a root-only
+        DataOutputStream os = new DataOutputStream(p.getOutputStream());
+        os.writeBytes(cmd + "\n");
 
-		p.waitFor();
-		if (p.exitValue() != 255) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+        // Close the terminal
+        os.writeBytes("exit\n");
+        os.flush();
 
-	/**
-	 * 
-	 * @Title: setDNS
-	 * @Description: TODO
-	 * @param @param ip
-	 * @param @param index
-	 * @param @return
-	 * @param @throws IOException
-	 * @param @throws InterruptedException
-	 * @return boolean 返回类型
-	 * @throws
-	 */
-	public static boolean setDNS(String ip, int index) throws IOException,
-			InterruptedException {
+        p.waitFor();
+        if (p.exitValue() != 255) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-		String cmd = String.format("setprop net.dns%d %s", index, ip);
+    public static boolean setDNS() throws IOException,
+            InterruptedException {
+        return setDNS();
+    }
 
-		Log.i(TAG, cmd);
-		Process p = Runtime.getRuntime().exec("su");
 
-		// Attempt to write a file to a root-only
-		DataOutputStream os = new DataOutputStream(p.getOutputStream());
-		os.writeBytes(cmd + "\n");
+    public static boolean setDNS(String ip, int index) throws IOException,
+            InterruptedException {
 
-		// Close the terminal
-		os.writeBytes("exit\n");
-		os.flush();
+        String cmd = String.format("setprop net.dns%d %s", index, ip);
 
-		p.waitFor();
-		if (p.exitValue() != 255) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+        Log.i(TAG, cmd);
+        Process p = Runtime.getRuntime().exec("su");
 
-	private static String intToIp(int i) {
-		return (i & 0xFF) + "." + ((i >> 8) & 0xFF) + "." + ((i >> 16) & 0xFF)
-				+ "." + ((i >> 24) & 0xFF);
-	}
+        // Attempt to write a file to a root-only
+        DataOutputStream os = new DataOutputStream(p.getOutputStream());
+        os.writeBytes(cmd + "\n");
+
+        // Close the terminal
+        os.writeBytes("exit\n");
+        os.flush();
+
+        p.waitFor();
+        if (p.exitValue() != 255) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private static String intToIp(int i) {
+        return (i & 0xFF) + "." + ((i >> 8) & 0xFF) + "." + ((i >> 16) & 0xFF)
+                + "." + ((i >> 24) & 0xFF);
+    }
 }

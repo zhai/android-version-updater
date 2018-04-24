@@ -1,4 +1,4 @@
 <resources>
-
+    <string name="app_name">Android-Version-Updater-Example</string>
     <string name="action_settings">Settings</string>
 </resources>

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -24,6 +25,8 @@ import com.zhaisoft.lib.updater.util.SystemUtil;
 
 import java.io.File;
 
+import static android.os.Environment.getExternalStorageDirectory;
+
 public class Activity_Verison_Update extends BaseCompatActivity {
 
     final int DIALOG_EXIT = 1000;
@@ -31,6 +34,7 @@ public class Activity_Verison_Update extends BaseCompatActivity {
     private NumberProgressBar pb;
     private TextView downloading_kb;
     private TextView downloading_percent;
+
 
     Handler updateHandler = new Handler() {
         @Override
@@ -42,7 +46,7 @@ public class Activity_Verison_Update extends BaseCompatActivity {
                         if (UpdateConfig.force_update)
                             showDialog(UpdateConfig.DIALOG_UPDATE);
                         break;
-                    case 1:
+                    case UpdaterConfig.MESSAGE_DOWNLOADING:
                         pb.setProgress(msg.arg1);
                         UpdateConfig.loading_process = msg.arg1;
                         if (UpdateConfig.MB < 1024) {
@@ -75,12 +79,25 @@ public class Activity_Verison_Update extends BaseCompatActivity {
                         downloading_percent.setText(UpdateConfig.loading_process
                                 + "%");
                         break;
-                    case 2:
+                    case UpdaterConfig.MESSAGE_DOWNLOAD_SUCCESS:
+
+                        LogUtil2.e("update", "MESSAGE_DOWNLOAD_SUCCESS");
+
+
                         finish();
 
+//                        String filePath = Environment.getExternalStorageDirectory() + getResources()
+//                                .getString(R.string.app_name) + ".apk";
+//
+//                        Intent i = new Intent(Intent.ACTION_VIEW);
+//                        i.setDataAndType(Uri.parse("file://" + filePath), "application/vnd.android.package-archive");
+//                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                        startActivity(i);
+
+
                         Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setDataAndType(Uri.fromFile(new File(Environment
-                                        .getExternalStorageDirectory(), getResources()
+                        intent.setDataAndType(Uri.fromFile(new File(
+                                        getExternalStorageDirectory(), getResources()
                                         .getString(R.string.app_name) + ".apk")),
                                 "application/vnd.android.package-archive");
                         startActivity(intent);
@@ -88,10 +105,10 @@ public class Activity_Verison_Update extends BaseCompatActivity {
                         if (true)
                             return;
 
-                        String apkFilePath = Environment
-                                .getExternalStorageDirectory()
-                                + getResources().getString(R.string.app_name)
-                                + ".apk";
+                        String apkFilePath =
+                                getExternalStorageDirectory()
+                                        + getResources().getString(R.string.app_name)
+                                        + ".apk";
                         String cmd = "adb install -r " + apkFilePath;
 
 
@@ -117,31 +134,9 @@ public class Activity_Verison_Update extends BaseCompatActivity {
                                     Toast.LENGTH_LONG).show();
                         }
 
-                        //
-                        // String apkFilePath = Environment
-                        // .getExternalStorageDirectory()
-                        // + getResources().getString(R.string.app_name)
-                        // + ".apk";
-                        // String cmd = "adb install -r " + apkFilePath;
-                        //
-                        // if (SystemUtil.runRootCmd(cmd)) {
-                        // ComponentName componetName = new ComponentName(
-                        // "com.zhai.ads", "com.zhai.touchhome.Loading"); // AMIsh相册
-                        //
-                        // Intent intent2 = new Intent();
-                        // intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        // intent2.setComponent(componetName);
-                        // try {
-                        // startActivity(intent2);
-                        // } catch (Exception e) {
-                        // e.printStackTrace();
-                        // }
-                        // } else {
-                        // Log.e("install", "安装失败");
-                        // }
 
                         break;
-                    case -1:
+                    case UpdaterConfig.MESSAGE_DOWNLOAD_ERROR:
                         String error = msg.getData().getString("error");
                         Toast.makeText(Activity_Verison_Update.this, error,
                                 Toast.LENGTH_SHORT).show();
@@ -158,6 +153,7 @@ public class Activity_Verison_Update extends BaseCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // setContentView(R.layout.popup);
+        enableStrictMode();
     }
 
     final int DIALOG_NEED_UPDATE = 1;
@@ -191,11 +187,11 @@ public class Activity_Verison_Update extends BaseCompatActivity {
         return true;
     }
 
-	/*
+    /*
      * public boolean onKeyDown(int keyCode, KeyEvent event) { switch (keyCode)
-	 * { case KeyEvent.KEYCODE_BACK: return true; } return
-	 * super.onKeyDown(keyCode, event); }
-	 */
+     * { case KeyEvent.KEYCODE_BACK: return true; } return
+     * super.onKeyDown(keyCode, event); }
+     */
 
     @Override
     protected Dialog onCreateDialog(int id) {
@@ -359,5 +355,20 @@ public class Activity_Verison_Update extends BaseCompatActivity {
         }
         return super.onCreateDialog(id);
     }
+
+
+    private void enableStrictMode() {
+
+            final StrictMode.ThreadPolicy.Builder threadPolicyBuilder = new StrictMode.ThreadPolicy.Builder()
+                    .detectAll().penaltyLog();
+            final StrictMode.VmPolicy.Builder vmPolicyBuilder = new StrictMode.VmPolicy.Builder()
+                    .detectAll().penaltyLog();
+
+            threadPolicyBuilder.penaltyFlashScreen();
+            StrictMode.setThreadPolicy(threadPolicyBuilder.build());
+            StrictMode.setVmPolicy(vmPolicyBuilder.build());
+
+    }
+
 
 }

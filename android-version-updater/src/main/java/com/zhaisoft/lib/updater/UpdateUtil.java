@@ -84,7 +84,6 @@ public class UpdateUtil {
 //		HttpClient client = new DefaultHttpClient();
 //		HttpGet get = new HttpGet(url);
 
-
         int responseCode;
         try {
 
@@ -99,7 +98,7 @@ public class UpdateUtil {
 
 
             if (responseCode == HttpURLConnection.HTTP_NOT_FOUND) {
-                sendMsg(-404, 0, updateHandler); // 文件不存在
+                sendMsg(UpdaterConfig.MESSAGE_DOWNLOAD_ERROR, 0, updateHandler); // 文件不存在
                 return;
             }
 
@@ -124,14 +123,14 @@ public class UpdateUtil {
                     sendMsg(1, (int) (count * 100 / length), updateHandler);
                 }
             }
-            sendMsg(2, 0, updateHandler);
+            sendMsg(UpdaterConfig.MESSAGE_DOWNLOAD_SUCCESS, 0, updateHandler);
             fileOutputStream.flush();
             if (fileOutputStream != null) {
                 fileOutputStream.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
-            sendMsg(-1, 0, updateHandler);
+            sendMsg(UpdaterConfig.MESSAGE_DOWNLOAD_ERROR, 0, updateHandler);
         }
     }
 

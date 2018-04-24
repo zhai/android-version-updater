@@ -229,16 +229,7 @@ public class StringUtils {
 		return line;
 	}
 
-	/**
-	 * This method takes a string which may contain HTML tags (ie, &lt;b&gt;,
-	 * &lt;table&gt;, etc) and converts the '&lt'' and '&gt;' characters to
-	 * their HTML escape sequences.
-	 * 
-	 * @param input
-	 *            the text to be converted.
-	 * @return the input string with the characters '&lt;' and '&gt;' replaced
-	 *         with their HTML escape sequences.
-	 */
+
 	public static final String escapeHTMLTags(String input) {
 		// Check if the string is null or zero length -- if so, return
 		// what was sent in.

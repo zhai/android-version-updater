@@ -10,6 +10,7 @@ import android.widget.Toast;
 /**
  * Created by zhai on 12/17/15.
  */
+
 public class BaseCompatActivity extends AppCompatActivity {
 
 
