@@ -29,7 +29,7 @@ Android-Version-Updater
 
 
 ```groovy
-implementation 'com.zhaisoft.lib.updater:android-version-updater:0.1.18'
+implementation 'com.zhaisoft.lib.updater:android-version-updater:0.1.14'
 ```
 
 
