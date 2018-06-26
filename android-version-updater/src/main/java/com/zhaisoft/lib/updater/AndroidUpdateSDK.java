@@ -13,7 +13,7 @@ import java.util.List;
 public class AndroidUpdateSDK {
 	private static final String TAG = AndroidUpdateSDK.class.getSimpleName();
 	Context context;
-	// 注意，这里没有final
+	//注意，这里没有final
 	private static AndroidUpdateSDK instance = null;
 
 	// 静态工厂方法
