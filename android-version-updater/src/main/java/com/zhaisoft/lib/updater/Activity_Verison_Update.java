@@ -1,8 +1,10 @@
 package com.zhaisoft.lib.updater;
 
+import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -12,6 +14,9 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.os.StrictMode;
+import android.provider.Settings;
+import android.support.annotation.RequiresApi;
+import android.support.v4.content.FileProvider;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -26,6 +31,7 @@ import com.zhaisoft.lib.updater.util.SystemUtil;
 import java.io.File;
 
 import static android.os.Environment.getExternalStorageDirectory;
+import static android.os.Environment.getExternalStorageState;
 
 public class Activity_Verison_Update extends BaseCompatActivity {
 
@@ -95,11 +101,29 @@ public class Activity_Verison_Update extends BaseCompatActivity {
 //                        startActivity(i);
 
 
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
+
+//                        String fileUrl =  getExternalStorageState() + getResources()
+//                                .getString(R.string.app_name) + ".apk";
+//
+//
+//                        openAPKFile(Activity_Verison_Update.this,fileUrl );
+
+                        installAPK(Activity_Verison_Update.this,new File(
+                                getExternalStorageDirectory(), getResources()
+                                .getString(R.string.app_name) + ".apk"));
+
+
+                        if(true)
+                            return;
+                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         intent.setDataAndType(Uri.fromFile(new File(
                                         getExternalStorageDirectory(), getResources()
                                         .getString(R.string.app_name) + ".apk")),
                                 "application/vnd.android.package-archive");
+
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);//添加这一句表示对目标应用临时
+
                         startActivity(intent);
 
                         if (true)
@@ -148,6 +172,32 @@ public class Activity_Verison_Update extends BaseCompatActivity {
         }
 
     };
+
+
+
+
+
+
+    public static boolean installAPK(Context context, File apkFile) {
+        if (apkFile.exists()) {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                Uri contentUri = FileProvider.getUriForFile(context, context.getApplicationInfo().processName+".install.fileProvider", apkFile);
+                intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
+            } else {
+                intent.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            }
+            if (context.getPackageManager().queryIntentActivities(intent, 0).size() > 0) {
+                context.startActivity(intent);
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -359,14 +409,14 @@ public class Activity_Verison_Update extends BaseCompatActivity {
 
     private void enableStrictMode() {
 
-            final StrictMode.ThreadPolicy.Builder threadPolicyBuilder = new StrictMode.ThreadPolicy.Builder()
-                    .detectAll().penaltyLog();
-            final StrictMode.VmPolicy.Builder vmPolicyBuilder = new StrictMode.VmPolicy.Builder()
-                    .detectAll().penaltyLog();
+        final StrictMode.ThreadPolicy.Builder threadPolicyBuilder = new StrictMode.ThreadPolicy.Builder()
+                .detectAll().penaltyLog();
+        final StrictMode.VmPolicy.Builder vmPolicyBuilder = new StrictMode.VmPolicy.Builder()
+                .detectAll().penaltyLog();
 
-            threadPolicyBuilder.penaltyFlashScreen();
-            StrictMode.setThreadPolicy(threadPolicyBuilder.build());
-            StrictMode.setVmPolicy(vmPolicyBuilder.build());
+        threadPolicyBuilder.penaltyFlashScreen();
+        StrictMode.setThreadPolicy(threadPolicyBuilder.build());
+        StrictMode.setVmPolicy(vmPolicyBuilder.build());
 
     }
 
