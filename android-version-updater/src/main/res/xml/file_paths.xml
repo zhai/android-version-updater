@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<paths>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 这个下载路径也不可以修改，必须为GDTDOWNLOAD -->
+    <external-path
+        name="gdt_sdk_download_path"
+        path="GDTDOWNLOAD" />
+
     <external-path
         name="files_root"
         path="Android/data/org.chris.quick/" />
     <external-path
         name="external_storage_root"
         path="." />
-
 </paths>
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>--><!--<paths>--><!--<external-path--><!--name="files_root"--><!--path="Android/data/org.chris.quick/" />--><!--<external-path--><!--name="external_storage_root"--><!--path="." />-->
+
+    <!--</paths>-->

@@ -9,7 +9,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0"
+        versionName "0.1.0"
     }
     buildTypes {
         release {
@@ -48,7 +48,7 @@ dependencies {
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "0.1.15"
+version = "0.1.20"
 
 
 def siteUrl = 'https://github.com/zhaizi/android-version-updater'                        // #CONFIG# // project homepage
@@ -91,6 +91,14 @@ task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
 }
+
+
+//出错了  打开这行 有用的
+
+tasks.withType(Javadoc).all {
+    enabled = false
+}
+
 
 task javadoc(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs

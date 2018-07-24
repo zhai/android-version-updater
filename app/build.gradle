@@ -10,7 +10,7 @@ android {
         targetSdkVersion 26
         versionCode 1
 
-        versionName "0.1.0"
+        versionName "2.0.0"
     }
     buildTypes {
         release {
@@ -19,6 +19,8 @@ android {
         }
     }
 }
+
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')

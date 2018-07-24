@@ -37,12 +37,14 @@ public class CheckUpdateService extends IntentService {
         boolean needTips = intent.getBooleanExtra("needTips", false);
         String url = intent.getStringExtra("url");
         checkUpdate(needTips, url);
+
+
     }
 
 
     private boolean checkUpdate(boolean needTips, String update_url) {
         // TODO Auto-generated method stub
-        currentVersionName = VersionUtil.getAppVersionName(context);
+        currentVersionName = VersionUtil.getLocalVersionName(context);
         try {
             InputStream is = HttpUtil.getInputStreamFormUrl(update_url);
             Properties prop = PropertyUtil.getPropertyFromInputStream(is);
@@ -59,6 +61,11 @@ public class CheckUpdateService extends IntentService {
             UpdateConfig.info = prop.getProperty("info");
             UpdateConfig.force_update = prop.getProperty("force_update")
                     .equals("1") ? true : false;
+
+
+            Log.e(TAG, "UpdateConfig.version_name=" + UpdateConfig.version_name);
+            Log.e(TAG, "currentVersionName=" + currentVersionName);
+
 
             if (UpdateConfig.version_name.compareTo(currentVersionName) > 0) {
                 // 有更新，弹出对话框
