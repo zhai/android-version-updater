@@ -29,7 +29,7 @@ Android-Version-Updater
 
 
 ```groovy
-implementation 'com.zhaisoft.lib.updater:android-version-updater:0.1.14'
+implementation 'com.zhaisoft.lib.updater:android-version-updater:(https://bintray.com/zhai/maven/com.zhaisoft.lib.updater/_latestVersion)'
 ```
 
 
@@ -66,6 +66,9 @@ implementation 'com.zhaisoft.lib.updater:android-version-updater:0.1.14'
 * 使用ApplicationContext防止内存溢出
 * 使用单独的FileProvider防止provider冲突无法编译成功
 * 添加ThreadManager类来管理Thread
+* 工具类 utils 包中 添加 NoDoubleClickListener 防止双击问题
+* widget 包中 添加 ClearEditText  extends EditText 带有清空x的EditText
+
 
 ###0.1.18 beta
 * 去掉不必要的权限，只保留两个权限，网络和下载权限

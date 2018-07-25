@@ -8,6 +8,7 @@ import android.os.Message;
 
 import com.zhaisoft.lib.updater.util.NetUtil;
 import com.zhaisoft.lib.updater.util.PropertyUtil;
+import com.zhaisoft.lib.updater.util.ThreadsManager;
 import com.zhaisoft.lib.updater.util.VersionUtil;
 
 import java.io.File;
@@ -143,14 +144,13 @@ public class UpdateUtil {
 
     public static void checkUpdateThread(final Context applicationContext,
                                          final Handler updateHandler) {
-        Thread updateThread = new Thread() {
+
+        ThreadsManager.post(new Runnable() {
             @Override
             public void run() {
                 UpdateUtil.checkUpdate(applicationContext, updateHandler);
-                super.run();
             }
-        };
-        updateThread.start();
+        });
 
     }
 
