@@ -62,6 +62,11 @@ implementation 'com.zhaisoft.lib.updater:android-version-updater:0.1.14'
                 
 ##版本迭代
 
+###0.1.22 beta 20180725
+* 使用ApplicationContext防止内存溢出
+* 使用单独的FileProvider防止provider冲突无法编译成功
+* 添加ThreadManager类来管理Thread
+
 ###0.1.18 beta
 * 去掉不必要的权限，只保留两个权限，网络和下载权限
 * 修改多进程下载的Bug

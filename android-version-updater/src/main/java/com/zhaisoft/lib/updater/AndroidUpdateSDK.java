@@ -11,12 +11,10 @@ import com.zhaisoft.lib.updater.util.LogUtil2;
 import java.util.List;
 
 public class AndroidUpdateSDK {
-    private static final String TAG = AndroidUpdateSDK.class.getSimpleName();
+    private final String TAG = AndroidUpdateSDK.class.getSimpleName();
     Context context;
-    //注意，这里没有final
     private static AndroidUpdateSDK instance = null;
 
-    // 静态工厂方法
     public synchronized static AndroidUpdateSDK getInstance() {
         if (instance == null) {
             instance = new AndroidUpdateSDK();
@@ -29,7 +27,9 @@ public class AndroidUpdateSDK {
     Intent CheckUpdateServiceIntent;
 
     public void init(Context _context) {
-        this.context = _context;
+
+        //使用ApplicationContent 防止内存溢出
+        this.context = _context.getApplicationContext();
         // 开启一个service
         Intent CheckUpdateServiceIntent = new Intent(context,
                 CheckUpdateService.class);
@@ -40,7 +40,6 @@ public class AndroidUpdateSDK {
     }
 //	boolean needTips = intent.getBooleanExtra("needTips", false);
 //	String url = intent.getStringExtra("url");
-
 
     /**
      * @param _context

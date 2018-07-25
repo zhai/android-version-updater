@@ -1,6 +1,5 @@
 package com.zhaisoft.lib.updater;
 
-import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.ComponentName;
@@ -10,12 +9,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.os.StrictMode;
-import android.provider.Settings;
-import android.support.annotation.RequiresApi;
 import android.support.v4.content.FileProvider;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -31,7 +27,6 @@ import com.zhaisoft.lib.updater.util.SystemUtil;
 import java.io.File;
 
 import static android.os.Environment.getExternalStorageDirectory;
-import static android.os.Environment.getExternalStorageState;
 
 public class Activity_Verison_Update extends BaseCompatActivity {
 
@@ -49,8 +44,9 @@ public class Activity_Verison_Update extends BaseCompatActivity {
                 switch (msg.what) {
                     case UpdateConfig.DIALOG_UPDATE:
 
-                        if (UpdateConfig.force_update)
+                        if (UpdateConfig.force_update) {
                             showDialog(UpdateConfig.DIALOG_UPDATE);
+                        }
                         break;
                     case UpdaterConfig.MESSAGE_DOWNLOADING:
                         pb.setProgress(msg.arg1);
@@ -101,21 +97,20 @@ public class Activity_Verison_Update extends BaseCompatActivity {
 //                        startActivity(i);
 
 
-
 //                        String fileUrl =  getExternalStorageState() + getResources()
 //                                .getString(R.string.app_name) + ".apk";
 //
 //
 //                        openAPKFile(Activity_Verison_Update.this,fileUrl );
 
-                        installAPK(Activity_Verison_Update.this,new File(
+                        installAPK(Activity_Verison_Update.this, new File(
                                 getExternalStorageDirectory(), getResources()
                                 .getString(R.string.app_name) + ".apk"));
 
 
-                        if(true)
+                        if (true)
                             return;
-                         Intent intent = new Intent(Intent.ACTION_VIEW);
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
                         intent.setDataAndType(Uri.fromFile(new File(
                                         getExternalStorageDirectory(), getResources()
                                         .getString(R.string.app_name) + ".apk")),
@@ -174,16 +169,12 @@ public class Activity_Verison_Update extends BaseCompatActivity {
     };
 
 
-
-
-
-
     public static boolean installAPK(Context context, File apkFile) {
         if (apkFile.exists()) {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                Uri contentUri = FileProvider.getUriForFile(context, context.getApplicationInfo().processName+".install.fileProvider", apkFile);
+                Uri contentUri = FileProvider.getUriForFile(context, context.getApplicationInfo().processName + ".install.fileProvider", apkFile);
                 intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
             } else {
                 intent.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
