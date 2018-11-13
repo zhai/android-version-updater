@@ -1,7 +1,8 @@
 package com.daimajia.numberprogressbar;
 
 /**
- * Created by lelexxx on 15-4-23.
+ * @author lelexxx
+ * @date 15-4-23
  */
 public interface OnProgressBarListener {
 
