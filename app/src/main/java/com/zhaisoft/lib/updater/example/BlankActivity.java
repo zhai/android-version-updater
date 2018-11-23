@@ -13,9 +13,6 @@ import com.zhaisoft.lib.updater.AndroidUpdateSDK;
 import com.zhaisoft.lib.updater.BaseCompatActivity;
 import com.zhaisoft.lib.updater.log.LogUtil;
 
-/**
- * @author zhai
- */
 public class BlankActivity extends BaseCompatActivity {
 
     @Override
@@ -32,5 +29,7 @@ public class BlankActivity extends BaseCompatActivity {
                 LogUtil.e("hi");
             }
         }, 5000);
+
+
     }
 }

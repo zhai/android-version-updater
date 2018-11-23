@@ -16,7 +16,7 @@ import android.widget.EditText;
 
 import com.zhaisoft.lib.updater.R;
 
-public class ClearEditText extends EditText implements OnFocusChangeListener,
+public class ZhaiClearEditText extends EditText implements OnFocusChangeListener,
 		TextWatcher {
 	/**
 	 * 删除按钮的引用
@@ -27,16 +27,16 @@ public class ClearEditText extends EditText implements OnFocusChangeListener,
 	 */
 	private boolean hasFoucs;
 
-	public ClearEditText(Context context) {
+	public ZhaiClearEditText(Context context) {
 		this(context, null);
 	}
 
-	public ClearEditText(Context context, AttributeSet attrs) {
+	public ZhaiClearEditText(Context context, AttributeSet attrs) {
 		// 这里构造方法也很重要，不加这个很多属性不能再XML里面定义
 		this(context, attrs, android.R.attr.editTextStyle);
 	}
 
-	public ClearEditText(Context context, AttributeSet attrs, int defStyle) {
+	public ZhaiClearEditText(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		init();
 	}

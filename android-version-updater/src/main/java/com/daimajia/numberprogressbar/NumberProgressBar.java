@@ -17,8 +17,7 @@ import static com.daimajia.numberprogressbar.NumberProgressBar.ProgressTextVisib
 import static com.daimajia.numberprogressbar.NumberProgressBar.ProgressTextVisibility.Visible;
 
 /**
- * @author daimajia
- * @date 14-4-30
+ * Created by daimajia on 14-4-30.
  */
 public class NumberProgressBar extends View {
 
@@ -431,7 +430,7 @@ public class NumberProgressBar extends View {
             setProgress(getProgress() + by);
         }
 
-        if (mListener != null) {
+        if(mListener != null){
             mListener.onProgressChange(getProgress(), getMax());
         }
     }
@@ -502,7 +501,7 @@ public class NumberProgressBar extends View {
         return mIfDrawText;
     }
 
-    public void setOnProgressBarListener(OnProgressBarListener listener) {
+    public void setOnProgressBarListener(OnProgressBarListener listener){
         mListener = listener;
     }
 }

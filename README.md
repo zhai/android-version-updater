@@ -29,7 +29,7 @@ Android-Version-Updater
 
 
 ```groovy
-implementation 'com.zhaisoft.lib.updater:android-version-updater:(https://bintray.com/zhai/maven/com.zhaisoft.lib.updater/_latestVersion)'
+implementation 'com.zhaisoft.lib.updater:android-version-updater:0.1.22'
 ```
 
 
@@ -61,6 +61,13 @@ implementation 'com.zhaisoft.lib.updater:android-version-updater:(https://bintra
 
                 
 ##版本迭代
+
+###0.1.23 beta 20180729
+ 
+* widget 包中 添加 ZhaiClearEditText  extends EditText 带有清空x的EditText
+* widget 包中 添加 ZhaiAutoSplitTextView 自动换行的Textview
+
+
 
 ###0.1.22 beta 20180725
 * 使用ApplicationContext防止内存溢出

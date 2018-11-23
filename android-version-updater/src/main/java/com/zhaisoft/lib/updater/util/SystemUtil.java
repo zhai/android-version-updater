@@ -1,8 +1,11 @@
 package com.zhaisoft.lib.updater.util;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
@@ -10,6 +13,7 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.os.SystemClock;
 import android.util.Log;
+import android.view.View;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -23,8 +27,53 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+/**
+ * 系统工具类
+ */
 public class SystemUtil {
     private static final String TAG = "SystemUtil";
+
+
+    public static String getChannelName(Context context) {
+        if (context == null) {
+            return null;
+        }
+        String channelName = null;
+        try {
+            PackageManager packageManager = context.getPackageManager();
+            if (packageManager != null) {
+                //注意此处为ApplicationInfo 而不是 ActivityInfo,因为友盟设置的meta-data是在application标签中，而不是某activity标签中，所以用ApplicationInfo
+                ApplicationInfo applicationInfo = packageManager.
+                        getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
+                if (applicationInfo != null) {
+                    if (applicationInfo.metaData != null) {
+                        channelName = String.valueOf(applicationInfo.metaData.get("UMENG_CHANNEL"));
+                    }
+                }
+
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return channelName;
+    }
+
+
+    public static void setDarkStatusIcon(Activity activity, boolean bDark) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            View decorView = activity.getWindow().getDecorView();
+            if (decorView != null) {
+                int vis = decorView.getSystemUiVisibility();
+                if (bDark) {
+                    vis |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+                } else {
+                    vis &= ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+                }
+                decorView.setSystemUiVisibility(vis);
+            }
+        }
+    }
+
 
     /**
      * 得到系统总内存
@@ -93,10 +142,10 @@ public class SystemUtil {
             // level加%就是当前电量了
         }
 
-		/*
+        /*
          * 然后在activity的oncreate()方法中注册 registerReceiver(batteryReceiver, new
-		 * IntentFilter(Intent.ACTION_BATTERY_CHANGED)
-		 */
+         * IntentFilter(Intent.ACTION_BATTERY_CHANGED)
+         */
     };
 
     public static String[] getCpuInfo() {

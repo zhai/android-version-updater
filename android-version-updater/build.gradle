@@ -2,12 +2,12 @@ apply plugin: 'com.android.library'
 
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     buildToolsVersion '28.0.3'
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "0.1.0"
     }
@@ -20,39 +20,29 @@ android {
 
     lintOptions {
         //abortOnError false
-
     }
-
-
     //为了解决BuildConfig 的问题
-
 }
 
 
 
 dependencies {
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation  'junit:junit:4.12'
-    implementation 'com.android.support:design:26.1.0'
-
-
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:design:27.1.1'
     //我的第三方库
 
 }
 //上传到服务器的配置
 
-
 // 执行命令 上传
 
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
+version = "0.1.27"
 
-version = "0.1.22"
-
-
-def siteUrl = 'https://github.com/zhaizi/android-version-updater'                        // #CONFIG# // project homepage
-def gitUrl = 'https://github.com/zhaizi/android-version-updater.git'                     // #CONFIG# // project git
+def siteUrl = 'https://github.com/zhai/android-version-updater'                        // #CONFIG# // project homepage
+def gitUrl = 'https://github.com/zhai/android-version-updater.git'                     // #CONFIG# // project git
 group = "com.zhaisoft.lib.updater"                                                          // #CONFIG# // Maven Group ID for the artifact (pageckage name is ok)
 
 install {
@@ -61,7 +51,8 @@ install {
         pom {
             project {
                 packaging 'aar'
-                name 'com.zhaisoft.lib.updater'                                   // #CONFIG# // project title
+                name 'com.zhaisoft.lib.updater'
+                // #CONFIG# // project title
                 url siteUrl
                 // Set your license
                 licenses {
@@ -72,9 +63,12 @@ install {
                 }
                 developers {
                     developer {
-                        id 'zhai'                                           // #CONFIG# // your user id (you can write your nickname)
-                        name 'zhai'                                       // #CONFIG# // your user name
-                        email '10192856@qq.com'                               // #CONFIG# // your email
+                        id 'zhai'
+                        // #CONFIG# // your user id (you can write your nickname)
+                        name 'zhai'
+                        // #CONFIG# // your user name
+                        email '10192856@qq.com'
+                        // #CONFIG# // your email
                     }
                 }
                 scm {
@@ -91,7 +85,6 @@ task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
 }
-
 
 //出错了  打开这行 有用的
 
@@ -123,7 +116,8 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "com.zhaisoft.lib.updater"                                                 // #CONFIG# project name in jcenter
+        name = "com.zhaisoft.lib.updater"
+        // #CONFIG# project name in jcenter
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
@@ -133,7 +127,7 @@ bintray {
 
 
 javadoc { //jav doc采用utf-8编码否则会报“GBK的不可映射字符”错误
-    options{
+    options {
         encoding "UTF-8"
         charSet 'UTF-8'
     }
