@@ -1,5 +1,8 @@
 package com.zhaisoft.lib.updater;
 
+/**
+ * @author zhai
+ */
 public class UpdaterConfig {
 
     public static final int MESSAGE_DOWNLOADING = 1;

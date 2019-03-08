@@ -28,7 +28,10 @@ import java.io.File;
 
 import static android.os.Environment.getExternalStorageDirectory;
 
-public class Activity_Verison_Update extends BaseCompatActivity {
+/**
+ * @author zhai
+ */
+public class ActivityVerisonUpdate extends BaseCompatActivity {
 
     final int DIALOG_EXIT = 1000;
     // 以下部分是添加的自动更新
@@ -85,7 +88,6 @@ public class Activity_Verison_Update extends BaseCompatActivity {
 
                         LogUtil2.e("update", "MESSAGE_DOWNLOAD_SUCCESS");
 
-
                         finish();
 
 //                        String filePath = Environment.getExternalStorageDirectory() + getResources()
@@ -101,9 +103,9 @@ public class Activity_Verison_Update extends BaseCompatActivity {
 //                                .getString(R.string.app_name) + ".apk";
 //
 //
-//                        openAPKFile(Activity_Verison_Update.this,fileUrl );
+//                        openAPKFile(ActivityVerisonUpdate.this,fileUrl );
 
-                        installAPK(Activity_Verison_Update.this, new File(
+                        installAPK(ActivityVerisonUpdate.this, new File(
                                 getExternalStorageDirectory(), getResources()
                                 .getString(R.string.app_name) + ".apk"));
 
@@ -149,7 +151,7 @@ public class Activity_Verison_Update extends BaseCompatActivity {
 
                         } else {
                             // 安装失败
-                            Toast.makeText(Activity_Verison_Update.this, "安装失败",
+                            Toast.makeText(ActivityVerisonUpdate.this, "安装失败",
                                     Toast.LENGTH_LONG).show();
                         }
 
@@ -157,7 +159,7 @@ public class Activity_Verison_Update extends BaseCompatActivity {
                         break;
                     case UpdaterConfig.MESSAGE_DOWNLOAD_ERROR:
                         String error = msg.getData().getString("error");
-                        Toast.makeText(Activity_Verison_Update.this, error,
+                        Toast.makeText(ActivityVerisonUpdate.this, error,
                                 Toast.LENGTH_SHORT).show();
                         break;
                     default:
@@ -239,7 +241,7 @@ public class Activity_Verison_Update extends BaseCompatActivity {
         switch (id) {
             case DIALOG_EXIT:
                 Builder builder_exit = new Builder(
-                        Activity_Verison_Update.this);
+                        ActivityVerisonUpdate.this);
                 builder_exit.setMessage("感谢对本程序的支持,如果程序好用，请给我们好评");
                 builder_exit.setTitle("提示");
                 builder_exit.setPositiveButton("退出",
@@ -247,7 +249,7 @@ public class Activity_Verison_Update extends BaseCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
-                                Activity_Verison_Update.this.finish();
+                                ActivityVerisonUpdate.this.finish();
                             }
                         });
 
@@ -273,7 +275,7 @@ public class Activity_Verison_Update extends BaseCompatActivity {
                 downloading_kb = (TextView) view2.findViewById(R.id.downloading_kb);
                 downloading_percent = (TextView) view2
                         .findViewById(R.id.downloading_percent);
-                Builder builder = new Builder(Activity_Verison_Update.this);
+                Builder builder = new Builder(ActivityVerisonUpdate.this);
                 downloading_percent.setVisibility(View.GONE);
                 builder.setView(view2);
                 builder.setTitle("版本更新进度提示");
@@ -281,7 +283,7 @@ public class Activity_Verison_Update extends BaseCompatActivity {
                 builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface arg0) {
-                        Intent intent = new Intent(Activity_Verison_Update.this,
+                        Intent intent = new Intent(ActivityVerisonUpdate.this,
                                 UpdateService.class);
                         startService(intent);
 
@@ -293,7 +295,7 @@ public class Activity_Verison_Update extends BaseCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent intent = new Intent(
-                                        Activity_Verison_Update.this,
+                                        ActivityVerisonUpdate.this,
                                         UpdateService.class);
                                 startService(intent);
                                 dialog.dismiss();
@@ -303,13 +305,13 @@ public class Activity_Verison_Update extends BaseCompatActivity {
                 return builder.create();
             case UpdateConfig.DIALOG_UPDATE:
                 LayoutInflater inflater = LayoutInflater
-                        .from(Activity_Verison_Update.this);
+                        .from(ActivityVerisonUpdate.this);
                 View view = inflater.inflate(R.layout.update_dialog, null);
                 WebView webview = (WebView) view.findViewById(R.id.webView1);
                 webview.loadUrl(UpdateConfig.info);
 
                 Builder alert = new Builder(
-                        Activity_Verison_Update.this);
+                        ActivityVerisonUpdate.this);
                 alert.setCancelable(false);
                 alert.setView(view);
                 alert.setTitle("发现新版本:" + UpdateConfig.version_name);
@@ -322,7 +324,7 @@ public class Activity_Verison_Update extends BaseCompatActivity {
                                 new Thread() {
                                     public void run() {
                                         UpdateUtil.loadFile(
-                                                Activity_Verison_Update.this,
+                                                ActivityVerisonUpdate.this,
                                                 UpdateConfig.apk, updateHandler);
                                     }
                                 }.start();
@@ -379,7 +381,7 @@ public class Activity_Verison_Update extends BaseCompatActivity {
 
             case UpdateConfig.DIALOG_RUNNING:
                 Builder alert2 = new Builder(
-                        Activity_Verison_Update.this);
+                        ActivityVerisonUpdate.this);
                 alert2.setMessage("正在更新");
                 alert2.setTitle("提示");
                 alert2.setPositiveButton("停止",

@@ -16,6 +16,9 @@ import com.zhaisoft.lib.updater.util.VersionUtil;
 import java.io.InputStream;
 import java.util.Properties;
 
+/***
+ * author zhai
+ */
 public class CheckUpdateService extends IntentService {
 
     Context context;
@@ -26,6 +29,7 @@ public class CheckUpdateService extends IntentService {
         super("");
         Log.d(TAG, "Constructor");
         this.context = CheckUpdateService.this;
+
     }
 
     @Override
@@ -79,7 +83,7 @@ public class CheckUpdateService extends IntentService {
                 Bundle b = new Bundle();
                 b.putInt("command", UpdateConfig.DIALOG_UPDATE);
                 intent.putExtras(b);
-                intent.setClass(context, Activity_Verison_Update.class);
+                intent.setClass(context, ActivityVerisonUpdate.class);
                 context.startActivity(intent);
 
                 return true;

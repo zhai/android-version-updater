@@ -6,18 +6,22 @@ import android.content.Intent;
 import android.util.Log;
 
 
+import com.bumptech.glide.Glide;
 import com.zhaisoft.lib.updater.util.LogUtil2;
 
 import java.util.List;
 
-public class AndroidUpdateSDK {
-    private final String TAG = AndroidUpdateSDK.class.getSimpleName();
+/**
+ * @author zhai
+ */
+public class AndroidUpdateSdk {
+    private final String TAG = AndroidUpdateSdk.class.getSimpleName();
     Context context;
-    private static AndroidUpdateSDK instance = null;
+    private static AndroidUpdateSdk instance = null;
 
-    public synchronized static AndroidUpdateSDK getInstance() {
+    public synchronized static AndroidUpdateSdk getInstance() {
         if (instance == null) {
-            instance = new AndroidUpdateSDK();
+            instance = new AndroidUpdateSdk();
         }
         return instance;
     }
@@ -37,6 +41,7 @@ public class AndroidUpdateSDK {
         CheckUpdateServiceIntent.putExtra(MESSAGE_IN, "Activity传给serive的参数");
         context.startService(CheckUpdateServiceIntent);
         LogUtil2.i(TAG, "启动一个服务");
+
     }
 //	boolean needTips = intent.getBooleanExtra("needTips", false);
 //	String url = intent.getStringExtra("url");

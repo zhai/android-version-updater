@@ -15,7 +15,7 @@
         android:supportsRtl="true">
 
         <activity
-            android:name="com.zhaisoft.lib.updater.Activity_Verison_Update"
+            android:name="com.zhaisoft.lib.updater.ActivityVerisonUpdate"
             android:configChanges="keyboardHidden|screenSize|screenLayout"
             android:label="@string/app_name"
             android:process=":remote"

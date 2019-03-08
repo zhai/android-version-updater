@@ -11,6 +11,8 @@ import android.os.IBinder;
 import android.os.Message;
 import android.widget.RemoteViews;
 
+import com.zhaisoft.lib.updater.util.ThreadsManager;
+
 import java.text.SimpleDateFormat;
 
 public class UpdateService extends Service {
@@ -19,6 +21,7 @@ public class UpdateService extends Service {
     private int old_process = 0;
     private boolean isFirstStart = false;
 
+    @Override
     @SuppressLint("SimpleDateFormat")
     public void onCreate() {
         super.onCreate();
@@ -43,15 +46,14 @@ public class UpdateService extends Service {
             if (UpdateConfig.loading_process > old_process) {
                 displayNotificationMessage(UpdateConfig.loading_process);
             }
-
-            new Thread() {
+            ThreadsManager.post(new Runnable() {
                 @Override
                 public void run() {
                     isFirstStart = false;
                     Message msg = mHandler.obtainMessage();
                     mHandler.sendMessage(msg);
                 }
-            }.start();
+            });
             old_process = UpdateConfig.loading_process;
         }
     };
