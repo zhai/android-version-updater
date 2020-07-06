@@ -21,7 +21,6 @@ import android.os.Message;
 import android.os.StatFs;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.util.SparseArray;

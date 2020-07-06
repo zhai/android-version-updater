@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.util.Log;
 
 
-import com.bumptech.glide.Glide;
 import com.zhaisoft.lib.updater.util.LogUtil2;
 
 import java.util.List;

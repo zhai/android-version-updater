@@ -2,12 +2,14 @@ package com.zhaisoft.lib.updater.widget;
 
 import android.content.Context;
 import android.graphics.Paint;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-public class ZhaiAutoSplitTextView extends android.support.v7.widget.AppCompatTextView {
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
+
+public class ZhaiAutoSplitTextView extends AppCompatTextView {
     private boolean mEnabled = true;
 
     public ZhaiAutoSplitTextView(Context context) {

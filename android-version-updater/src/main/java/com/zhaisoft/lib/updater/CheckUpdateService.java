@@ -10,6 +10,7 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.zhaisoft.lib.updater.log.LogUtil;
 import com.zhaisoft.lib.updater.util.PropertyUtil;
 import com.zhaisoft.lib.updater.util.VersionUtil;
 
@@ -104,6 +105,7 @@ public class CheckUpdateService extends IntentService {
                 return false;
             }
         } catch (Exception e) {
+           e.printStackTrace();
 
             if (needTips) {
                 Handler handler = new Handler(Looper.getMainLooper());

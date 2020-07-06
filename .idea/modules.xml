@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android-version-updater.iml" filepath="$PROJECT_DIR$/.idea/modules/android-version-updater.iml" group="android-version-updater" />
       <module fileurl="file://$PROJECT_DIR$/android-version-updater/android-version-updater-android-version-updater.iml" filepath="$PROJECT_DIR$/android-version-updater/android-version-updater-android-version-updater.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android-version-updater-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android-version-updater-app.iml" group="android-version-updater/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android-version-updater/com.zhaisoft.lib.updater-android-version-updater-android-version-updater.iml" filepath="$PROJECT_DIR$/.idea/modules/android-version-updater/com.zhaisoft.lib.updater-android-version-updater-android-version-updater.iml" group="android-version-updater/android-version-updater" />
       <module fileurl="file://$PROJECT_DIR$/git-android-version-updater.iml" filepath="$PROJECT_DIR$/git-android-version-updater.iml" />
     </modules>
   </component>
