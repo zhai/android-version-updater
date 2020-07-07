@@ -3,6 +3,7 @@ package com.zhaisoft.lib.updater;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.util.Log;
 
 
@@ -37,8 +38,15 @@ public class AndroidUpdateSdk {
         Intent CheckUpdateServiceIntent = new Intent(context,
                 CheckUpdateService.class);
 
+
         CheckUpdateServiceIntent.putExtra(MESSAGE_IN, "Activity传给serive的参数");
-        context.startService(CheckUpdateServiceIntent);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            context.startForegroundService(CheckUpdateServiceIntent);
+        } else {
+            context.startService(CheckUpdateServiceIntent);
+        }
+
         LogUtil2.i(TAG, "启动一个服务");
 
     }

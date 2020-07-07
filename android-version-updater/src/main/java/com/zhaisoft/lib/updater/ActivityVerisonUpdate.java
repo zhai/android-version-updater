@@ -279,6 +279,7 @@ public class ActivityVerisonUpdate extends BaseCompatActivity {
                 Builder builder = new Builder(ActivityVerisonUpdate.this);
                 downloading_percent.setVisibility(View.GONE);
                 builder.setView(view2);
+                builder.setCancelable(false);
                 builder.setTitle("版本更新进度提示");
 
                 builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
