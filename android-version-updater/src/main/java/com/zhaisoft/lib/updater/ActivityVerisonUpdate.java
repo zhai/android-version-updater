@@ -285,25 +285,34 @@ public class ActivityVerisonUpdate extends BaseCompatActivity {
                 builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface arg0) {
-                        Intent intent = new Intent(ActivityVerisonUpdate.this,
-                                UpdateService.class);
-                        startService(intent);
+//                        Intent intent = new Intent(ActivityVerisonUpdate.this,
+//                                UpdateService.class);
+//                        startService(intent);
+
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            startForegroundService(new Intent(ActivityVerisonUpdate.this,
+                                    UpdateService.class));
+                        } else {
+                            startService(new Intent(ActivityVerisonUpdate.this,
+                                    UpdateService.class));
+                        }
+
 
                         finish();
                     }
                 });
-                builder.setNegativeButton("后台下载",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(
-                                        ActivityVerisonUpdate.this,
-                                        UpdateService.class);
-                                startService(intent);
-                                dialog.dismiss();
-                                finish();
-                            }
-                        });
+//                builder.setNegativeButton("后台下载",
+//                        new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                Intent intent = new Intent(
+//                                        ActivityVerisonUpdate.this,
+//                                        UpdateService.class);
+//                                startService(intent);
+//                                dialog.dismiss();
+//                                finish();
+//                            }
+//                        });
                 return builder.create();
             case UpdateConfig.DIALOG_UPDATE:
                 LayoutInflater inflater = LayoutInflater

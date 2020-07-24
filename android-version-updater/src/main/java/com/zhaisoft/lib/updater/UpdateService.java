@@ -32,6 +32,8 @@ public class UpdateService extends Service {
         mHandler.handleMessage(new Message());
         SimpleDateFormat sDateFormat = new SimpleDateFormat("HH:mm");
         time = sDateFormat.format(new java.util.Date());
+
+        startForeground(1,new Notification());
     }
 
     private Handler mHandler = new Handler() {
