@@ -344,9 +344,6 @@ public class ActivityVersionUpdate extends AppCompatActivity {
                     showDownloadErrorDialog();
                 }
 
-//                alertDialog2.dismiss();
-//                finish();
-//                System.out.println("taskEnd=");
             }
 
             @Override
@@ -369,7 +366,7 @@ public class ActivityVersionUpdate extends AppCompatActivity {
 
         String fileName = FilenameUtils.getName(mVOApk.apk);
 
-        String targetApkPath = "/sdcard/" + getCurrentPacakgeName(BaseMultiDexApplication.getInstance().getApplicationContext()) + "/";
+        String targetApkPath = "/sdcard/" + getCurrentPacakgeName(ActivityVersionUpdate.this.getApplicationContext()) + "/";
         DownloadTask task = new DownloadTask.Builder(mVOApk.apk, targetApkPath, fileName)
                 .setFilename(fileName)
                 //.setPassIfAlreadyCompleted(false)
@@ -436,7 +433,7 @@ public class ActivityVersionUpdate extends AppCompatActivity {
 
         String fileName = FilenameUtils.getName(mVOApk.apk);
 
-        String targetApkPath = "/sdcard/" + getCurrentPacakgeName(BaseMultiDexApplication.getInstance().getApplicationContext()) + "/";
+        String targetApkPath = "/sdcard/" + getCurrentPacakgeName(ActivityVersionUpdate.this.getApplicationContext()) + "/";
 
         File apkFile = new File(targetApkPath + fileName);
 
@@ -444,7 +441,7 @@ public class ActivityVersionUpdate extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            Uri uri = AndPermission.getFileUri(BaseMultiDexApplication.getInstance().getApplicationContext(), apkFile);
+            Uri uri = AndPermission.getFileUri(ActivityVersionUpdate.this.getApplicationContext(), apkFile);
             intent.setDataAndType(uri, "application/vnd.android.package-archive");
             startActivity(intent);
             finish();

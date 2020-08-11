@@ -29,7 +29,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
     //我的第三方库
-    api "com.zhaisoft.lib.mvp:lib.mvp:0.0.35"
+    implementation "com.zhaisoft.lib.mvp:lib.mvp:0.0.35"
 
 }
 //上传到服务器的配置
@@ -38,7 +38,7 @@ dependencies {
 
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
-version = "0.2.0"
+version = "0.2.2"
 
 def siteUrl = 'https://github.com/zhai/android-version-updater'                        // #CONFIG# // project homepage
 def gitUrl = 'https://github.com/zhai/android-version-updater.git'                     // #CONFIG# // project git
