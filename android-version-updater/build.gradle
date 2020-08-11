@@ -2,12 +2,12 @@ apply plugin: 'com.android.library'
 
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion '29.0.3'
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "0.1.0"
     }
@@ -29,7 +29,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
     //我的第三方库
-    implementation "com.zhaisoft.lib.mvp:lib.mvp:0.0.17"
+    api "com.zhaisoft.lib.mvp:lib.mvp:0.0.35"
 
 }
 //上传到服务器的配置
@@ -38,7 +38,7 @@ dependencies {
 
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
-version = "0.1.46"
+version = "0.2.0"
 
 def siteUrl = 'https://github.com/zhai/android-version-updater'                        // #CONFIG# // project homepage
 def gitUrl = 'https://github.com/zhai/android-version-updater.git'                     // #CONFIG# // project git

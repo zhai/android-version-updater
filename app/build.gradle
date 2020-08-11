@@ -10,6 +10,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "0.0.1"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -29,17 +30,19 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
 
-    def androidx_version = "1.1.0"
+    //def androidx_version = "1.1.0"
 
-    implementation "androidx.appcompat:appcompat:$androidx_version"
-    implementation "androidx.constraintlayout:constraintlayout:$androidx_version"
-    implementation "com.google.android.material:material:$androidx_version"
-    implementation "androidx.annotation:annotation:$androidx_version"
-    implementation 'com.yanzhenjie:permission:2.0.0-rc3'
+//    implementation "androidx.appcompat:appcompat:$androidx_version"
+//    implementation "androidx.constraintlayout:constraintlayout:$androidx_version"
+//    implementation "com.google.android.material:material:$androidx_version"
+//    implementation "androidx.annotation:annotation:$androidx_version"
+//    implementation 'com.yanzhenjie:permission:2.0.0-rc3'
 
 
     //    implementation 'com.android.support:design:28.0.0'
     //compile 'com.zhaisoft.lib.updater:android-version-updater:0.1.3'
+
+    implementation 'com.android.support:multidex:1.0.3'
     //compile prp
-    implementation project(':android-version-updater')
+    api project(':android-version-updater')
 }

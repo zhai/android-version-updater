@@ -3,33 +3,36 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zhaisoft.lib.updater">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
+
+
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:hardwareAccelerated="true"
+        android:label="@string/app_name"
+
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
+
+
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name="com.zhaisoft.lib.updater.ActivityVerisonUpdate"
+            android:name="com.zhaisoft.lib.updater.ActivityVersionUpdate"
             android:configChanges="keyboardHidden|screenSize|screenLayout"
             android:label="@string/app_name"
-            android:process=":remote"
             android:theme="@style/DialogTheme"
             android:windowSoftInputMode="stateHidden|adjustResize">
 
         </activity>
 
-        <service
-            android:name="com.zhaisoft.lib.updater.CheckUpdateService"
-            android:process=":remote" />
-        <service
-            android:name="com.zhaisoft.lib.updater.UpdateService"
-            android:process=":remote"></service>
+        <service android:name="com.zhaisoft.lib.updater.CheckUpdateService" />
 
 
         <!--//自定义provider 防止  provider 冲突-->

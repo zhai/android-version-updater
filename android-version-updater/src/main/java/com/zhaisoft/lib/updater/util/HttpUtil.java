@@ -1,4 +1,4 @@
-package com.zhaisoft.lib.updater;
+package com.zhaisoft.lib.updater.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -54,7 +54,7 @@ public class HttpUtil {
     }
 
 
-    public static InputStream getInputStreamFormUrl(String urlString) throws IOException {
+    public static InputStream getInputStreamFormUrl(String urlString) throws Exception {
         HttpURLConnection conn = null; //连接对象
         InputStream is = null;
         String resultData = "";
@@ -68,15 +68,11 @@ public class HttpUtil {
             is = conn.getInputStream();   //获取输入流，此时才真正建立链接
             return is;
 
-        } catch (MalformedURLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            throw new IOException();
-        } catch (IOException e) {
+        } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
 
-            throw new IOException();
+            throw e;
         } finally {
 //            if (is != null) {
 //                try {
